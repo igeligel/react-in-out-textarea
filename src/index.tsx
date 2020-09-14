@@ -110,6 +110,7 @@ const CaseButton = styled.div<CaseButtonProps>`
     }
   }};
   box-sizing: border-box;
+  white-space: nowrap;
 `;
 
 const LeftContent = styled.div`
