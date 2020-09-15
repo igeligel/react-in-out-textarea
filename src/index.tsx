@@ -4,6 +4,8 @@ import TextareaAutosize from 'react-autosize-textarea';
 import useDimensions from 'react-use-dimensions';
 import { IconX } from './IconX';
 import { IconCopy } from './IconCopy';
+import { IconChevronDown } from './IconChevronDown';
+import { IconChevronUp } from './IconChevronUp';
 
 const ConvertCard = styled.div`
   font-family: 'Roboto';
@@ -38,6 +40,7 @@ const CaseBar = styled.div`
 const ConvertCardContent = styled.div`
   width: 100%;
   display: flex;
+  position: relative;
 
   @media (max-width: 576px) {
     flex-direction: column;
@@ -197,12 +200,68 @@ export const GlobalStyles = createGlobalStyle`
   ${fontFaces}
 `;
 
+const MoreOptionsIconContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+`;
+
+interface OptionsOverlay {
+  minHeight?: string;
+  maxHeight?: string;
+}
+
+const OptionsOverlay = styled.div<OptionsOverlay>`
+  position: absolute;
+  width: 100%;
+  min-height: ${props => props.minHeight || 'initial'};
+  max-height: ${props => props.maxHeight || 'initial'};
+  background-color: white;
+  opacity: 0.99;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  padding-left: 10px;
+  padding-right: 20px;
+  box-sizing: border-box;
+  padding-top: 8px;
+  padding-bottom: 8px;
+`;
+
+const OverlayOption = styled.div`
+  box-sizing: border-box;
+  font-size: 14px;
+  font-family: 'Roboto';
+  line-height: 30px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 10px;
+  display: inline-block;
+  min-width: 15%;
+  cursor: pointer;
+
+  :hover {
+    border-radius: 3px;
+    background-color: #f5f5f5;
+  }
+`;
+
 const liveMeasure = true;
 
 // @ts-ignore
 export const InOutTextarea: FC<Props> = props => {
   const [menuOptions, setMenuOptions] = useState<Array<IInOption>>([]);
   const [leftBarRef, leftBarSizes] = useDimensions({ liveMeasure });
+  const [convertCardRef, convertCardSizes] = useDimensions({ liveMeasure });
+
+  const [showAdditionalInOptions, setShowAdditionalInOptions] = useState<
+    boolean
+  >(false);
 
   // @ts-ignore
   const { children, inOptions } = props;
@@ -246,6 +305,16 @@ export const InOutTextarea: FC<Props> = props => {
                   );
                 })}
             </OptionsContainer>
+            {menuOptions?.length > 0 && (
+              <MoreOptionsIconContainer
+                onClick={() => {
+                  setShowAdditionalInOptions(!showAdditionalInOptions);
+                }}
+              >
+                {!showAdditionalInOptions && <IconChevronDown />}
+                {showAdditionalInOptions && <IconChevronUp />}
+              </MoreOptionsIconContainer>
+            )}
           </LeftCaseBar>
           <MidCaseBar>
             <div style={{ width: '40px' }}>{/* <IconRefreshCw /> */}</div>
@@ -256,7 +325,17 @@ export const InOutTextarea: FC<Props> = props => {
             </CaseButton>
           </RightCaseBar>
         </CaseBar>
-        <ConvertCardContent>
+        <ConvertCardContent ref={convertCardRef}>
+          {showAdditionalInOptions && (
+            <OptionsOverlay
+              minHeight={`${convertCardSizes.height}px`}
+              maxHeight={`${convertCardSizes.height}px`}
+            >
+              {menuOptions.map(e => {
+                return <OverlayOption>{e.name}</OverlayOption>;
+              })}
+            </OptionsOverlay>
+          )}
           <LeftContent>
             <LeftContentContent>
               <TextareaContainer>
@@ -305,11 +384,6 @@ export const InOutTextarea: FC<Props> = props => {
           </RightContent>
         </ConvertCardContent>
       </ConvertCard>
-      <div>
-        {menuOptions.map(e => {
-          return <div>{e.name}</div>;
-        })}
-      </div>
     </>
   );
 };

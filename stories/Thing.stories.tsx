@@ -40,6 +40,34 @@ export const Default = (props?: Partial<Props>) => (
           name: 'Chinese',
           active: false,
         },
+        {
+          name: 'Chinese 1',
+          active: false,
+        },
+        {
+          name: 'Chinese 2',
+          active: false,
+        },
+        {
+          name: 'Chinese 3',
+          active: false,
+        },
+        {
+          name: 'Chinese 4',
+          active: false,
+        },
+        {
+          name: 'Chinese 5',
+          active: false,
+        },
+        {
+          name: 'Chinese 6',
+          active: false,
+        },
+        {
+          name: 'Chinese 7',
+          active: false,
+        }
       ]}
     />
   </div>
