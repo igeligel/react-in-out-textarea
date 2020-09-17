@@ -1,14 +1,17 @@
-import React, { FC, HTMLAttributes, ReactChild, useState } from 'react';
-import styled, { css, createGlobalStyle } from 'styled-components';
+import React, { FC, HTMLAttributes, useState } from 'react';
+import styled from 'styled-components';
 import TextareaAutosize from 'react-autosize-textarea';
 import useDimensions from 'react-use-dimensions';
 import { IconX } from './IconX';
 import { IconCopy } from './IconCopy';
 import { IconChevronDown } from './IconChevronDown';
 import { IconChevronUp } from './IconChevronUp';
+import { CaseButton } from './CaseButton';
+import { MenuOptionStuff } from './MenuOptionStuff';
+import { IInOption } from './types';
 
 const ConvertCard = styled.div`
-  font-family: 'Roboto';
+  font-family: Roboto, sans-serif;
   min-height: 50px;
   background-color: #white;
   box-shadow: ${props =>
@@ -53,6 +56,7 @@ const LeftCaseBar = styled.div`
   color: #14213d;
   justify-content: space-between;
   overflow: hidden;
+  position: relative;
 `;
 
 const MidCaseBar = styled.div``;
@@ -74,46 +78,6 @@ const OptionsContainer = styled.div`
   @media (max-width: 576px) {
     display: none;
   }
-`;
-
-type CaseButtonProps = {
-  active?: boolean;
-  activeClicked?: boolean;
-};
-
-const CaseButton = styled.div<CaseButtonProps>`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding: 10px 20px;
-  padding-top: 12px;
-  cursor: pointer;
-  color: ${props => {
-    if (props.theme.main === 'dark') {
-      if (props.active || props.activeClicked) {
-        return '#fff';
-      } else {
-        return '#E5E5E5';
-      }
-    } else {
-      if (props.active || props.activeClicked) {
-        return '#14213d';
-      } else {
-        return 'color: rgba(20,33,61,0.4);';
-      }
-    }
-  }};
-  border-bottom: ${props => {
-    if (props.active) {
-      return '2px solid #fca311';
-    } else if (props.activeClicked) {
-      return '2px solid #5ba4ca';
-    } else {
-      return '2px solid transparent';
-    }
-  }};
-  box-sizing: border-box;
-  white-space: nowrap;
 `;
 
 const LeftContent = styled.div`
@@ -147,7 +111,7 @@ const Textarea = styled(TextareaAutosize)<ExampleTextProps>`
   flex-grow: 1;
   color: ${props => (props.theme.main === 'dark' ? '#fff' : '#14213d')};
   background-color: transparent;
-  font-family: 'Roboto';
+  font-family: Roboto;
   font-size: ${props => (props.smallerFont ? '1.2em' : '1.61em')};
   ${props => (props.showCopyCursor ? 'cursor: text;' : '')};
 
@@ -178,33 +142,26 @@ const RightContent = styled.div`
     props.theme.main === 'dark' ? 'rgb(24, 37, 66)' : 'rgb(249, 250, 250)'};
 `;
 
-interface IInOption {
-  name: string;
-  active: boolean;
-}
-
-export interface Props extends HTMLAttributes<HTMLDivElement> {
-  children?: ReactChild;
-  inOptions: Array<IInOption>;
-}
-
-export const fontFaces = css`
-  @font-face {
-    font-family: 'Roboto';
-    src: url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-    font-style: normal;
-  }
-`;
-
-export const GlobalStyles = createGlobalStyle`
-  ${fontFaces}
-`;
-
 const MoreOptionsIconContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  color: hsl(222deg 18% 78%);
+  position: absolute;
+  right: 0;
+  height: 100%;
+  padding-left: 15px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 40%,
+    rgba(255, 255, 255, 1) 100%
+  );
+
+  :hover {
+    color: hsl(220deg 15% 50%);
+  }
 `;
 
 interface OptionsOverlay {
@@ -236,7 +193,7 @@ const OptionsOverlay = styled.div<OptionsOverlay>`
 const OverlayOption = styled.div`
   box-sizing: border-box;
   font-size: 14px;
-  font-family: 'Roboto';
+  font-family: Roboto;
   line-height: 30px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -253,10 +210,20 @@ const OverlayOption = styled.div`
 
 const liveMeasure = true;
 
+export interface Props extends HTMLAttributes<HTMLDivElement> {
+  // children?: ReactChild;
+  inOptions: Array<IInOption>;
+  inValue: string;
+  onInInput: (text: string) => void;
+  onInOptionsUpdate: (newInOptions: Array<IInOption>) => void;
+}
+
 // @ts-ignore
 export const InOutTextarea: FC<Props> = props => {
   const [menuOptions, setMenuOptions] = useState<Array<IInOption>>([]);
-  const [leftBarRef, leftBarSizes] = useDimensions({ liveMeasure });
+  const [inOptionsMenuRef, inOptionsMenuRefSizes] = useDimensions({
+    liveMeasure,
+  });
   const [convertCardRef, convertCardSizes] = useDimensions({ liveMeasure });
 
   const [showAdditionalInOptions, setShowAdditionalInOptions] = useState<
@@ -264,57 +231,42 @@ export const InOutTextarea: FC<Props> = props => {
   >(false);
 
   // @ts-ignore
-  const { children, inOptions } = props;
+  const { inOptions, inValue, onInInput, onInOptionsUpdate } = props;
 
-  console.log(JSON.stringify(leftBarSizes));
   return (
     <>
-      <GlobalStyles></GlobalStyles>
       <ConvertCard>
         <CaseBar>
-          <LeftCaseBar ref={leftBarRef}>
+          <LeftCaseBar>
             <OptionsContainer>
               {inOptions
-                .sort((a, b) => {
+                .sort(a => {
                   if (a.active) return -1;
                   return 0;
                 })
                 .map(option => {
-                  const [suuuRef, suuSizes] = useDimensions({ liveMeasure });
-
-                  const shouldHide =
-                    suuSizes.x + suuSizes.width >
-                    leftBarSizes.width - leftBarSizes.y;
-
-                  if (shouldHide) {
-                    if (menuOptions.find(e => e.name === option.name)) return;
-                    setMenuOptions([...menuOptions, option]);
-                    return;
-                  } else {
-                    if (menuOptions.find(e => e.name === option.name)) {
-                      setMenuOptions([
-                        ...menuOptions.filter(e => e.name !== option.name),
-                      ]);
-                    }
-                  }
-
                   return (
-                    <CaseButton ref={suuuRef} active={option.active}>
-                      {option.name}
-                    </CaseButton>
+                    <MenuOptionStuff
+                      inOptionsMenuRefSizes={inOptionsMenuRefSizes}
+                      liveMeasure={liveMeasure}
+                      menuOptions={menuOptions}
+                      option={option}
+                      inOptions={inOptions}
+                      onInOptionsUpdate={onInOptionsUpdate}
+                      setMenuOptions={setMenuOptions}
+                    />
                   );
                 })}
             </OptionsContainer>
-            {menuOptions?.length > 0 && (
-              <MoreOptionsIconContainer
-                onClick={() => {
-                  setShowAdditionalInOptions(!showAdditionalInOptions);
-                }}
-              >
-                {!showAdditionalInOptions && <IconChevronDown />}
-                {showAdditionalInOptions && <IconChevronUp />}
-              </MoreOptionsIconContainer>
-            )}
+            <MoreOptionsIconContainer
+              ref={inOptionsMenuRef}
+              onClick={() => {
+                setShowAdditionalInOptions(!showAdditionalInOptions);
+              }}
+            >
+              {!showAdditionalInOptions && <IconChevronDown />}
+              {showAdditionalInOptions && <IconChevronUp />}
+            </MoreOptionsIconContainer>
           </LeftCaseBar>
           <MidCaseBar>
             <div style={{ width: '40px' }}>{/* <IconRefreshCw /> */}</div>
@@ -331,8 +283,22 @@ export const InOutTextarea: FC<Props> = props => {
               minHeight={`${convertCardSizes.height}px`}
               maxHeight={`${convertCardSizes.height}px`}
             >
-              {menuOptions.map(e => {
-                return <OverlayOption>{e.name}</OverlayOption>;
+              {menuOptions.map(option => {
+                return (
+                  <OverlayOption
+                    onClick={() => {
+                      const updatedOptions = [
+                        ...inOptions.map(inOption => ({
+                          ...inOption,
+                          active: inOption.name === option.name,
+                        })),
+                      ];
+                      onInOptionsUpdate(updatedOptions);
+                    }}
+                  >
+                    {option.name}
+                  </OverlayOption>
+                );
               })}
             </OptionsOverlay>
           )}
@@ -344,20 +310,14 @@ export const InOutTextarea: FC<Props> = props => {
                   placeholder="..."
                   rows={2}
                   smallerFont={false}
-                  value={'awdawdawdawd'}
+                  value={inValue}
                   maxLength={100}
-                  // @ts-ignore
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    // setInputText(e.target.value);
+                  onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
+                    if (!event.target.value) return;
+                    onInInput(event.target.value);
                   }}
                 />
-                <IconContainer
-                  onClick={() => {
-                    // setInputText('');
-                    // setCalculatedTargetCaseType('');
-                    // setTargetCaseType('');
-                  }}
-                >
+                <IconContainer onClick={() => onInInput('')}>
                   <IconX size={32} />
                 </IconContainer>
               </TextareaContainer>
