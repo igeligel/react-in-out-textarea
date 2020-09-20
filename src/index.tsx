@@ -66,6 +66,7 @@ const RightCaseBar = styled.div`
   display: flex;
   color: #14213d;
   overflow: hidden;
+  position: relative;
 
   @media (max-width: 576px) {
     flex-direction: column;
@@ -142,7 +143,11 @@ const RightContent = styled.div`
     props.theme.main === 'dark' ? 'rgb(24, 37, 66)' : 'rgb(249, 250, 250)'};
 `;
 
-const MoreOptionsIconContainer = styled.div`
+interface IMoreOptionsIconContainer {
+  right?: boolean;
+}
+
+const MoreOptionsIconContainer = styled.div<IMoreOptionsIconContainer>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -158,6 +163,8 @@ const MoreOptionsIconContainer = styled.div`
     rgba(255, 255, 255, 1) 40%,
     rgba(255, 255, 255, 1) 100%
   );
+
+  padding-right: ${props => (props.right ? '10px' : '0px')};
 
   :hover {
     color: hsl(220deg 15% 50%);
@@ -216,12 +223,18 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   inValue: string;
   onInInput: (text: string) => void;
   onInOptionsUpdate: (newInOptions: Array<IInOption>) => void;
+  outOptions: Array<any>;
+  onOutOptionsUpdate: (newOutOptions: Array<any>) => void;
 }
 
 // @ts-ignore
 export const InOutTextarea: FC<Props> = props => {
   const [menuOptions, setMenuOptions] = useState<Array<IInOption>>([]);
+  const [menuOutOptions, setMenuOutOptions] = useState<Array<any>>([]);
   const [inOptionsMenuRef, inOptionsMenuRefSizes] = useDimensions({
+    liveMeasure,
+  });
+  const [outOptionsMenuRef, outOptionsMenuRefSizes] = useDimensions({
     liveMeasure,
   });
   const [convertCardRef, convertCardSizes] = useDimensions({ liveMeasure });
@@ -230,8 +243,19 @@ export const InOutTextarea: FC<Props> = props => {
     boolean
   >(false);
 
+  const [showAdditionalOutOptions, setShowAdditionalOutOptions] = useState<
+    boolean
+  >(false);
+
   // @ts-ignore
-  const { inOptions, inValue, onInInput, onInOptionsUpdate } = props;
+  const {
+    inOptions,
+    inValue,
+    onInInput,
+    onInOptionsUpdate,
+    outOptions,
+    onOutOptionsUpdate,
+  } = props;
 
   return (
     <>
@@ -272,12 +296,64 @@ export const InOutTextarea: FC<Props> = props => {
             <div style={{ width: '40px' }}>{/* <IconRefreshCw /> */}</div>
           </MidCaseBar>
           <RightCaseBar>
-            <CaseButton activeClicked={true} active={false} onClick={() => {}}>
-              PascalCase
-            </CaseButton>
+            <OptionsContainer>
+              {outOptions
+                .sort(a => {
+                  if (a.activeClicked) return -1;
+                  if (a.active) return -1;
+                  return 0;
+                })
+                .map(option => {
+                  return (
+                    <MenuOptionStuff
+                      inOptionsMenuRefSizes={outOptionsMenuRefSizes}
+                      liveMeasure={liveMeasure}
+                      menuOptions={menuOutOptions}
+                      option={option}
+                      inOptions={outOptions}
+                      onInOptionsUpdate={onOutOptionsUpdate}
+                      setMenuOptions={setMenuOutOptions}
+                    />
+                  );
+                })}
+            </OptionsContainer>
+            <MoreOptionsIconContainer
+              right
+              ref={outOptionsMenuRef}
+              onClick={() => {
+                setShowAdditionalOutOptions(!showAdditionalOutOptions);
+              }}
+            >
+              {!showAdditionalOutOptions && <IconChevronDown />}
+              {showAdditionalOutOptions && <IconChevronUp />}
+            </MoreOptionsIconContainer>
           </RightCaseBar>
         </CaseBar>
         <ConvertCardContent ref={convertCardRef}>
+          {showAdditionalOutOptions && (
+            <OptionsOverlay
+              minHeight={`${convertCardSizes.height}px`}
+              maxHeight={`${convertCardSizes.height}px`}
+            >
+              {menuOptions.map(option => {
+                return (
+                  <OverlayOption
+                    onClick={() => {
+                      const updatedOptions = [
+                        ...outOptions.map(outOption => ({
+                          ...outOption,
+                          active: outOption.name === option.name,
+                        })),
+                      ];
+                      onOutOptionsUpdate(updatedOptions);
+                    }}
+                  >
+                    {option.name}
+                  </OverlayOption>
+                );
+              })}
+            </OptionsOverlay>
+          )}
           {showAdditionalInOptions && (
             <OptionsOverlay
               minHeight={`${convertCardSizes.height}px`}

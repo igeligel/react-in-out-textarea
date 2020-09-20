@@ -68,6 +68,54 @@ export const Default = (props?: Partial<Props>) => {
     },
   ]);
 
+  const [outOptions, setOutOptions] = useState<Array<any>>([
+    {
+      name: 'English',
+      active: true,
+      activeClicked: false,
+    },
+    {
+      name: 'German',
+      active: false,
+      activeClicked: false,
+    },
+    {
+      name: 'Russian',
+      active: false,
+      activeClicked: false,
+    },
+    {
+      name: 'Chinese 1',
+      active: false,
+      activeClicked: false,
+    },
+    {
+      name: 'Chinese 2',
+      active: false,
+      activeClicked: false,
+    },
+    {
+      name: 'Chinese 3',
+      active: false,
+      activeClicked: false,
+    },
+    {
+      name: 'Chinese 4',
+      active: false,
+      activeClicked: false,
+    },
+    {
+      name: 'Chinese 5',
+      active: false,
+      activeClicked: false,
+    },
+    {
+      name: 'Chinese 6',
+      active: false,
+      activeClicked: false,
+    },
+  ]);
+
   return (
     <div style={{ maxWidth: '1100px' }}>
       <InOutTextarea
@@ -77,6 +125,10 @@ export const Default = (props?: Partial<Props>) => {
         inOptions={inOptions}
         onInOptionsUpdate={newInOptions => {
           setInOptions(newInOptions);
+        }}
+        outOptions={outOptions}
+        onOutOptionsUpdate={newOutOptions => {
+          setOutOptions(newOutOptions)
         }}
       />
     </div>
