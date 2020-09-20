@@ -313,7 +313,11 @@ export const InOutTextarea: FC<Props> = props => {
                   value={inValue}
                   maxLength={100}
                   onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
-                    if (!event.target.value) return;
+                    if (
+                      event.target.value === null ||
+                      event.target.value === undefined
+                    )
+                      return;
                     onInInput(event.target.value);
                   }}
                 />
