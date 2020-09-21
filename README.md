@@ -2,6 +2,10 @@
 
 > A simple React.js component that is like Google Translate
 
+## Used by
+
+- [caseconverter.pro](https://caseconverter.pro/app)
+
 ## Usage
 
 ## Development
