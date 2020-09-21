@@ -130,6 +130,7 @@ export const Default = (props?: Partial<Props>) => {
         onOutOptionsUpdate={newOutOptions => {
           setOutOptions(newOutOptions)
         }}
+        outValue={"Test 123"}
       />
     </div>
   );

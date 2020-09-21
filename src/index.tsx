@@ -6,7 +6,7 @@ import { IconX } from './IconX';
 import { IconCopy } from './IconCopy';
 import { IconChevronDown } from './IconChevronDown';
 import { IconChevronUp } from './IconChevronUp';
-import { CaseButton } from './CaseButton';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { MenuOptionStuff } from './MenuOptionStuff';
 import { IInOption } from './types';
 
@@ -221,6 +221,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   // children?: ReactChild;
   inOptions: Array<IInOption>;
   inValue: string;
+  outValue: string;
   onInInput: (text: string) => void;
   onInOptionsUpdate: (newInOptions: Array<IInOption>) => void;
   outOptions: Array<any>;
@@ -255,6 +256,7 @@ export const InOutTextarea: FC<Props> = props => {
     onInOptionsUpdate,
     outOptions,
     onOutOptionsUpdate,
+    outValue,
   } = props;
 
   return (
@@ -285,6 +287,7 @@ export const InOutTextarea: FC<Props> = props => {
             <MoreOptionsIconContainer
               ref={inOptionsMenuRef}
               onClick={() => {
+                setShowAdditionalOutOptions(false);
                 setShowAdditionalInOptions(!showAdditionalInOptions);
               }}
             >
@@ -321,6 +324,7 @@ export const InOutTextarea: FC<Props> = props => {
               right
               ref={outOptionsMenuRef}
               onClick={() => {
+                setShowAdditionalInOptions(false);
                 setShowAdditionalOutOptions(!showAdditionalOutOptions);
               }}
             >
@@ -335,7 +339,7 @@ export const InOutTextarea: FC<Props> = props => {
               minHeight={`${convertCardSizes.height}px`}
               maxHeight={`${convertCardSizes.height}px`}
             >
-              {menuOptions.map(option => {
+              {menuOutOptions.map(option => {
                 return (
                   <OverlayOption
                     onClick={() => {
@@ -410,15 +414,13 @@ export const InOutTextarea: FC<Props> = props => {
                   disabled
                   smallerFont={false}
                   showCopyCursor={true}
-                  value={'awawawaw'}
+                  value={outValue}
                 />
-                <IconContainer
-                  onClick={() => {
-                    // ignored
-                  }}
-                >
-                  <IconCopy size={24} />
-                </IconContainer>
+                <CopyToClipboard text={outValue} onCopy={() => {}}>
+                  <IconContainer>
+                    <IconCopy size={24} />
+                  </IconContainer>
+                </CopyToClipboard>
               </TextareaContainer>
             </LeftContentContent>
           </RightContent>
