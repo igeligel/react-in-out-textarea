@@ -1,19 +1,19 @@
 import React from 'react';
 import useDimensions, { IDimensionValues } from 'react-use-dimensions';
 import { CaseButton } from './CaseButton';
-import { IInOption } from './types';
+import { IInOption, InOptions } from './types';
 
-interface IMenuOptionStuff {
+interface IInMenuOptionStuff {
   inOptionsMenuRefSizes: IDimensionValues;
   liveMeasure: boolean;
-  menuOptions: IInOption[];
+  menuOptions: InOptions;
   option: IInOption;
-  inOptions: Array<IInOption>;
-  onInOptionsUpdate: (newInOptions: Array<IInOption>) => void;
-  setMenuOptions: React.Dispatch<React.SetStateAction<IInOption[]>>;
+  inOptions: InOptions;
+  onInOptionsUpdate: (newInOptions: InOptions) => void;
+  setMenuOptions: React.Dispatch<React.SetStateAction<InOptions>>;
 }
 
-export const MenuOptionStuff = (props: IMenuOptionStuff) => {
+export const InMenuOptionStuff = (props: IInMenuOptionStuff) => {
   const {
     inOptionsMenuRefSizes,
     liveMeasure,
@@ -30,7 +30,9 @@ export const MenuOptionStuff = (props: IMenuOptionStuff) => {
   const shouldHide = suuSizes.x + suuSizes.width > inOptionsMenuRefSizes.x;
 
   if (shouldHide) {
-    if (menuOptions.find((e: IInOption) => e.name === option.name)) return null;
+    if (menuOptions.find((e: IInOption) => e.name === option.name)) {
+      return null;
+    }
     setMenuOptions([...menuOptions, option]);
     return null;
   } else {
@@ -44,7 +46,7 @@ export const MenuOptionStuff = (props: IMenuOptionStuff) => {
       ref={suuuRef}
       active={option.active}
       onClick={() => {
-        const updatedOptions: IInOption[] = [
+        const updatedOptions: InOptions = [
           ...inOptions.map((inOption: IInOption) => ({
             ...inOption,
             active: inOption.name === option.name,

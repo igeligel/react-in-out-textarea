@@ -7,8 +7,11 @@ import { IconCopy } from './IconCopy';
 import { IconChevronDown } from './IconChevronDown';
 import { IconChevronUp } from './IconChevronUp';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { MenuOptionStuff } from './MenuOptionStuff';
-import { IInOption } from './types';
+import { InMenuOptionStuff } from './InMenuOptionStuff';
+import { OutMenuOptionStuff } from './OutMenuOptionStuff';
+import { IInOption, InOptions, IOutOption, OutOptions } from './types';
+
+export { IInOption, IOutOption, InOptions, OutOptions };
 
 const ConvertCard = styled.div`
   font-family: Roboto, sans-serif;
@@ -218,20 +221,18 @@ const OverlayOption = styled.div`
 const liveMeasure = true;
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
-  // children?: ReactChild;
-  inOptions: Array<IInOption>;
+  inOptions: InOptions;
   inValue: string;
   outValue: string;
   onInInput: (text: string) => void;
-  onInOptionsUpdate: (newInOptions: Array<IInOption>) => void;
-  outOptions: Array<any>;
-  onOutOptionsUpdate: (newOutOptions: Array<any>) => void;
+  onInOptionsUpdate: (newInOptions: InOptions) => void;
+  outOptions: OutOptions;
+  onOutOptionsUpdate: (newOutOptions: OutOptions) => void;
 }
 
-// @ts-ignore
 export const InOutTextarea: FC<Props> = props => {
-  const [menuOptions, setMenuOptions] = useState<Array<IInOption>>([]);
-  const [menuOutOptions, setMenuOutOptions] = useState<Array<any>>([]);
+  const [menuOptions, setMenuOptions] = useState<InOptions>([]);
+  const [menuOutOptions, setMenuOutOptions] = useState<OutOptions>([]);
   const [inOptionsMenuRef, inOptionsMenuRefSizes] = useDimensions({
     liveMeasure,
   });
@@ -248,7 +249,6 @@ export const InOutTextarea: FC<Props> = props => {
     boolean
   >(false);
 
-  // @ts-ignore
   const {
     inOptions,
     inValue,
@@ -272,7 +272,7 @@ export const InOutTextarea: FC<Props> = props => {
                 })
                 .map(option => {
                   return (
-                    <MenuOptionStuff
+                    <InMenuOptionStuff
                       inOptionsMenuRefSizes={inOptionsMenuRefSizes}
                       liveMeasure={liveMeasure}
                       menuOptions={menuOptions}
@@ -308,13 +308,13 @@ export const InOutTextarea: FC<Props> = props => {
                 })
                 .map(option => {
                   return (
-                    <MenuOptionStuff
-                      inOptionsMenuRefSizes={outOptionsMenuRefSizes}
+                    <OutMenuOptionStuff
+                      outOptionsMenuRefSizes={outOptionsMenuRefSizes}
                       liveMeasure={liveMeasure}
                       menuOptions={menuOutOptions}
                       option={option}
-                      inOptions={outOptions}
-                      onInOptionsUpdate={onOutOptionsUpdate}
+                      outOptions={outOptions}
+                      onOutOptionsUpdate={onOutOptionsUpdate}
                       setMenuOptions={setMenuOutOptions}
                     />
                   );

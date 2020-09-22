@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { InOutTextarea, Props } from '../src';
+import { InOutTextarea, Props, InOptions, OutOptions } from '../src';
 
 export default {
   title: 'Welcome',
@@ -8,8 +8,8 @@ export default {
 // By passing optional props to this story, you can control the props of the component when
 // you consume the story in a test.
 export const Default = (props?: Partial<Props>) => {
-  const [inValue, setInValue] = useState<string>('');
-  const [inOptions, setInOptions] = useState<Array<>>([
+  const [inValue, setInValue] = useState<string>('Hello');
+  const [inOptions, setInOptions] = useState<InOptions>([
     {
       name: 'English',
       active: false,
@@ -68,7 +68,7 @@ export const Default = (props?: Partial<Props>) => {
     },
   ]);
 
-  const [outOptions, setOutOptions] = useState<Array<any>>([
+  const [outOptions, setOutOptions] = useState<OutOptions>([
     {
       name: 'English',
       active: true,
@@ -130,7 +130,7 @@ export const Default = (props?: Partial<Props>) => {
         onOutOptionsUpdate={newOutOptions => {
           setOutOptions(newOutOptions)
         }}
-        outValue={"Test 123"}
+        outValue={"Hello"}
       />
     </div>
   );
