@@ -12,6 +12,7 @@ assignees: ''
 - [ ] Name variables and functions well
 - [ ] Remove magic numbers
 - [ ] Extract each step of logic into a function
+- [ ] Extract React component
 - [ ] Remove duplicate code
 
 ## Description
