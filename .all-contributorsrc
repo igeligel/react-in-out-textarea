@@ -20,6 +20,15 @@
         "question",
         "review"
       ]
+    },
+    {
+      "login": "SheW0lf",
+      "name": "Amber",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/11381749?v=4",
+      "profile": "https://codepen.io/SheWolf/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
