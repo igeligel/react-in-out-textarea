@@ -67,6 +67,18 @@ export const ExampleComponent = () => {
 
 </details>
 
+## Props
+
+| Name  | Type | Description |
+| --- | --- | --- |
+| inValue  | string  | The value that is shown on the left-handed side. |
+| outValue  | string  | The value that is shown on the right-handed side. |
+| inOptions |  |  |
+| onInInput | string |  |
+| onInOptionsUpdate |  |  |
+| outOptions |  |  |
+| onOutOptionsUpdate |  |  |
+
 ## Development
 
 To start developing you need the following tools installed:
