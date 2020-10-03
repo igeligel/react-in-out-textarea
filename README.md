@@ -1,4 +1,7 @@
 # react-in-out-textarea
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ![](https://img.shields.io/github/license/igeligel/react-in-out-textarea) ![](https://img.shields.io/npm/v/react-in-out-textarea) ![](https://img.shields.io/github/workflow/status/igeligel/react-in-out-textarea/CI)
 
@@ -99,3 +102,22 @@ Our stories are saved under the [`./stories`](./stories) directory. Feel free to
 ## License
 
 The code is licensed under [MIT](./LICENSE).
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://www.kevinpeters.net/about/"><img src="https://avatars1.githubusercontent.com/u/12736734?v=4" width="100px;" alt=""/><br /><sub><b>Kevin Peters</b></sub></a><br /><a href="#business-igeligel" title="Business development">💼</a> <a href="https://github.com/igeligel/react-in-out-textarea/commits?author=igeligel" title="Code">💻</a> <a href="#design-igeligel" title="Design">🎨</a> <a href="#infra-igeligel" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-igeligel" title="Maintenance">🚧</a> <a href="#question-igeligel" title="Answering Questions">💬</a> <a href="https://github.com/igeligel/react-in-out-textarea/pulls?q=is%3Apr+reviewed-by%3Aigeligel" title="Reviewed Pull Requests">👀</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
