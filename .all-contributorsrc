@@ -1,0 +1,30 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "igeligel",
+      "name": "Kevin Peters",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/12736734?v=4",
+      "profile": "https://www.kevinpeters.net/about/",
+      "contributions": [
+        "business",
+        "code",
+        "design",
+        "infra",
+        "maintenance",
+        "question",
+        "review"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "react-in-out-textarea",
+  "projectOwner": "igeligel",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
