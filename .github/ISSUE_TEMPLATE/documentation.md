@@ -2,7 +2,7 @@
 name: Documentation
 about: Something unclear on how to use the project? Use this issue template to ask
   for appropriate documentation.
-title: ''
+title: 'Documentation: '
 labels: documentation
 assignees: ''
 
