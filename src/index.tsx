@@ -10,6 +10,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { InMenuOptionStuff } from './InMenuOptionStuff';
 import { OutMenuOptionStuff } from './OutMenuOptionStuff';
 import { IInOption, InOptions, IOutOption, OutOptions } from './types';
+import { Content } from './Content';
 import { CaseBar } from './CaseBar';
 
 export { IInOption, IOutOption, InOptions, OutOptions };
@@ -73,10 +74,6 @@ const OptionsContainer = styled.div`
   }
 `;
 
-const LeftContent = styled.div`
-  flex: 1;
-`;
-
 const LeftContentContent = styled.div`
   padding-left: 28px;
   padding-top: 20px;
@@ -127,12 +124,6 @@ const IconContainer = styled.div`
   :hover {
     color: rgba(107, 120, 146, 1);
   }
-`;
-
-const RightContent = styled.div`
-  flex: 1;
-  background-color: ${props =>
-    props.theme.main === 'dark' ? 'rgb(24, 37, 66)' : 'rgb(249, 250, 250)'};
 `;
 
 interface IMoreOptionsIconContainer {
@@ -371,7 +362,7 @@ export const InOutTextarea: FC<Props> = props => {
               })}
             </OptionsOverlay>
           )}
-          <LeftContent>
+          <Content>
             <LeftContentContent>
               <TextareaContainer>
                 <Textarea
@@ -395,8 +386,8 @@ export const InOutTextarea: FC<Props> = props => {
                 </IconContainer>
               </TextareaContainer>
             </LeftContentContent>
-          </LeftContent>
-          <RightContent>
+          </Content>
+          <Content>
             <LeftContentContent>
               <TextareaContainer>
                 <Textarea
@@ -412,7 +403,7 @@ export const InOutTextarea: FC<Props> = props => {
                 </CopyToClipboard>
               </TextareaContainer>
             </LeftContentContent>
-          </RightContent>
+          </Content>
         </ConvertCardContent>
       </ConvertCard>
     </>
