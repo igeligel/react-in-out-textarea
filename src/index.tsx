@@ -10,6 +10,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { InMenuOptionStuff } from './InMenuOptionStuff';
 import { OutMenuOptionStuff } from './OutMenuOptionStuff';
 import { IInOption, InOptions, IOutOption, OutOptions } from './types';
+import { CaseBar } from './CaseBar';
 
 export { IInOption, IOutOption, InOptions, OutOptions };
 
@@ -29,18 +30,6 @@ const ConvertCard = styled.div`
     }
     return null;
   }}
-`;
-
-const CaseBar = styled.div`
-  border-bottom: ${props =>
-    props.theme.main === 'dark'
-      ? '1px solid rgba(229, 229, 229, 0.2)'
-      : '1px solid rgba(20, 33, 61, 0.2)'};
-  display: flex;
-
-  @media (max-width: 576px) {
-    flex-direction: column;
-  }
 `;
 
 const ConvertCardContent = styled.div`
