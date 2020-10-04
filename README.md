@@ -48,22 +48,43 @@ export const ExampleComponent = () => {
     <InOutTextarea
       inValue={inValue}
       outValue={outValue}
-      onInInput={newValue => {
+      onInInput={(newValue) => {
         setInValue(newValue);
         setOutValue(newValue);
       }}
       inOptions={inOptions}
-      onInOptionsUpdate={newInOptions => {
+      onInOptionsUpdate={(newInOptions) => {
         setInOptions(newInOptions);
       }}
       outOptions={outOptions}
-      onOutOptionsUpdate={newOutOptions => {
+      onOutOptionsUpdate={(newOutOptions) => {
         setOutOptions(newOutOptions);
       }}
     />
   );
 };
 ```
+
+</details>
+
+## Installation
+
+<details>
+ <summary>Install via NPM/Yarn:</summary>
+
+### Install via NPM:
+
+```bash
+npm install --save cogo-toast
+```
+
+### Install via Yarn:
+
+```bash
+yarn add cogo-toast
+```
+
+#### Note:
 
 </details>
 
@@ -117,6 +138,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
