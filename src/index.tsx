@@ -12,6 +12,7 @@ import { OutMenuOptionStuff } from './OutMenuOptionStuff';
 import { IInOption, InOptions, IOutOption, OutOptions } from './types';
 import { Content } from './Content';
 import { CaseBar } from './CaseBar';
+import { SideBar } from './SideBar';
 
 export { IInOption, IOutOption, InOptions, OutOptions };
 
@@ -43,28 +44,7 @@ const ConvertCardContent = styled.div`
   }
 `;
 
-const LeftCaseBar = styled.div`
-  flex: 1;
-  display: flex;
-  color: #14213d;
-  justify-content: space-between;
-  overflow: hidden;
-  position: relative;
-`;
-
 const MidCaseBar = styled.div``;
-
-const RightCaseBar = styled.div`
-  flex: 1;
-  display: flex;
-  color: #14213d;
-  overflow: hidden;
-  position: relative;
-
-  @media (max-width: 576px) {
-    flex-direction: column;
-  }
-`;
 
 const OptionsContainer = styled.div`
   display: flex;
@@ -242,7 +222,7 @@ export const InOutTextarea: FC<Props> = props => {
   return (
     <ConvertCard>
       <CaseBar>
-        <LeftCaseBar>
+        <SideBar>
           <OptionsContainer>
             {inOptions
               .sort(a => {
@@ -273,11 +253,11 @@ export const InOutTextarea: FC<Props> = props => {
             {!showAdditionalInOptions && <IconChevronDown />}
             {showAdditionalInOptions && <IconChevronUp />}
           </MoreOptionsIconContainer>
-        </LeftCaseBar>
+        </SideBar>
         <MidCaseBar>
           <div style={{ width: '40px' }}>{/* <IconRefreshCw /> */}</div>
         </MidCaseBar>
-        <RightCaseBar>
+        <SideBar>
           <OptionsContainer>
             {outOptions
               .sort(a => {
@@ -310,7 +290,7 @@ export const InOutTextarea: FC<Props> = props => {
             {!showAdditionalOutOptions && <IconChevronDown />}
             {showAdditionalOutOptions && <IconChevronUp />}
           </MoreOptionsIconContainer>
-        </RightCaseBar>
+        </SideBar>
       </CaseBar>
       <ConvertCardContent ref={convertCardRef}>
         {showAdditionalOutOptions && (
