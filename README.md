@@ -10,6 +10,24 @@
 
 - [caseconverter.pro](https://caseconverter.pro/app)
 
+## Installation
+
+<details>
+  <summary>Install via NPM</summary>
+  
+  ```bash
+  npm install --save react-in-out-textarea
+  ```
+</details>
+
+<details>
+  <summary>Install via yarn</summary>
+  
+  ```bash
+  yarn add react-in-out-textarea
+  ```
+</details>
+
 ## Usage
 
 <details>
@@ -48,16 +66,16 @@ export const ExampleComponent = () => {
     <InOutTextarea
       inValue={inValue}
       outValue={outValue}
-      onInInput={newValue => {
+      onInInput={(newValue) => {
         setInValue(newValue);
         setOutValue(newValue);
       }}
       inOptions={inOptions}
-      onInOptionsUpdate={newInOptions => {
+      onInOptionsUpdate={(newInOptions) => {
         setInOptions(newInOptions);
       }}
       outOptions={outOptions}
-      onOutOptionsUpdate={newOutOptions => {
+      onOutOptionsUpdate={(newOutOptions) => {
         setOutOptions(newOutOptions);
       }}
     />
@@ -117,6 +135,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
