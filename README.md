@@ -70,20 +70,19 @@ export const ExampleComponent = () => {
 ## Installation
 
 <details>
- <summary>Install via NPM/Yarn:</summary>
+  <summary>Install via NPM</summary>
+  
+  ```bash
+  npm install --save react-in-out-textarea
+  ```
+</details>
 
-### Install via NPM:
-
-```bash
-npm install --save react-in-out-textarea
-```
-
-### Install via Yarn:
-
-```bash
-yarn add react-in-out-textarea
-```
-
+<details>
+  <summary>Install via yarn</summary>
+  
+  ```bash
+  yarn add react-in-out-textarea
+  ```
 </details>
 
 ## Development
