@@ -102,7 +102,9 @@ const Textarea = styled(TextareaAutosize)<ExampleTextProps>`
   color: ${props => (props.theme.main === 'dark' ? '#fff' : '#14213d')};
   background-color: transparent;
   font-family: ${
-    props => (props.theme && props.theme.font ? props.theme.font : 'Roboto')};
+    props =>
+    props.theme && props.theme.font ? props.theme.font : 'Roboto'
+  };
   font-size: ${props => (props.smallerFont ? '1.2em' : '1.61em')};
   ${props => (props.showCopyCursor ? 'cursor: text;' : '')};
 
