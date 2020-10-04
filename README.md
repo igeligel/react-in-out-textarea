@@ -75,13 +75,13 @@ export const ExampleComponent = () => {
 ### Install via NPM:
 
 ```bash
-npm install --save cogo-toast
+npm install --save react-in-out-textarea
 ```
 
 ### Install via Yarn:
 
 ```bash
-yarn add cogo-toast
+yarn add react-in-out-textarea
 ```
 
 </details>
