@@ -47,6 +47,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "devcer",
+      "name": "Santosh Viswanatham",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/3799600?v=4",
+      "profile": "http://devcer.github.io/",
+      "contributions": [
+        "code",
+        "infra"
+      ]
     }
   ],
   "contributorsPerLine": 7,
