@@ -84,8 +84,6 @@ npm install --save cogo-toast
 yarn add cogo-toast
 ```
 
-#### Note:
-
 </details>
 
 ## Development
