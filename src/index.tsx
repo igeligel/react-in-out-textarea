@@ -12,6 +12,7 @@ import { OutMenuOptionStuff } from './OutMenuOptionStuff';
 import { IInOption, InOptions, IOutOption, OutOptions } from './types';
 import { Content } from './Content';
 import { CaseBar } from './CaseBar';
+import { SideBar } from './SideBar';
 
 export { IInOption, IOutOption, InOptions, OutOptions };
 
@@ -43,28 +44,7 @@ const ConvertCardContent = styled.div`
   }
 `;
 
-const LeftCaseBar = styled.div`
-  flex: 1;
-  display: flex;
-  color: #14213d;
-  justify-content: space-between;
-  overflow: hidden;
-  position: relative;
-`;
-
 const MidCaseBar = styled.div``;
-
-const RightCaseBar = styled.div`
-  flex: 1;
-  display: flex;
-  color: #14213d;
-  overflow: hidden;
-  position: relative;
-
-  @media (max-width: 576px) {
-    flex-direction: column;
-  }
-`;
 
 const OptionsContainer = styled.div`
   display: flex;
@@ -240,170 +220,172 @@ export const InOutTextarea: FC<Props> = props => {
   } = props;
 
   return (
-    <ConvertCard>
-      <CaseBar>
-        <LeftCaseBar>
-          <OptionsContainer>
-            {inOptions
-              .sort(a => {
-                if (a.active) return -1;
-                return 0;
-              })
-              .map(option => {
+    <>
+      <ConvertCard>
+        <CaseBar>
+          <SideBar>
+            <OptionsContainer>
+              {inOptions
+                .sort(a => {
+                  if (a.active) return -1;
+                  return 0;
+                })
+                .map(option => {
+                  return (
+                    <InMenuOptionStuff
+                      inOptionsMenuRefSizes={inOptionsMenuRefSizes}
+                      liveMeasure={liveMeasure}
+                      menuOptions={menuOptions}
+                      option={option}
+                      inOptions={inOptions}
+                      onInOptionsUpdate={onInOptionsUpdate}
+                      setMenuOptions={setMenuOptions}
+                    />
+                  );
+                })}
+            </OptionsContainer>
+            <MoreOptionsIconContainer
+              ref={inOptionsMenuRef}
+              onClick={() => {
+                setShowAdditionalOutOptions(false);
+                setShowAdditionalInOptions(!showAdditionalInOptions);
+              }}
+            >
+              {!showAdditionalInOptions && <IconChevronDown />}
+              {showAdditionalInOptions && <IconChevronUp />}
+            </MoreOptionsIconContainer>
+          </SideBar>
+          <MidCaseBar>
+            <div style={{ width: '40px' }}>{/* <IconRefreshCw /> */}</div>
+          </MidCaseBar>
+          <SideBar>
+            <OptionsContainer>
+              {outOptions
+                .sort(a => {
+                  if (a.activeClicked) return -1;
+                  if (a.active) return -1;
+                  return 0;
+                })
+                .map(option => {
+                  return (
+                    <OutMenuOptionStuff
+                      outOptionsMenuRefSizes={outOptionsMenuRefSizes}
+                      liveMeasure={liveMeasure}
+                      menuOptions={menuOutOptions}
+                      option={option}
+                      outOptions={outOptions}
+                      onOutOptionsUpdate={onOutOptionsUpdate}
+                      setMenuOptions={setMenuOutOptions}
+                    />
+                  );
+                })}
+            </OptionsContainer>
+            <MoreOptionsIconContainer
+              right
+              ref={outOptionsMenuRef}
+              onClick={() => {
+                setShowAdditionalInOptions(false);
+                setShowAdditionalOutOptions(!showAdditionalOutOptions);
+              }}
+            >
+              {!showAdditionalOutOptions && <IconChevronDown />}
+              {showAdditionalOutOptions && <IconChevronUp />}
+            </MoreOptionsIconContainer>
+          </SideBar>
+        </CaseBar>
+        <ConvertCardContent ref={convertCardRef}>
+          {showAdditionalOutOptions && (
+            <OptionsOverlay
+              minHeight={`${convertCardSizes.height}px`}
+              maxHeight={`${convertCardSizes.height}px`}
+            >
+              {menuOutOptions.map(option => {
                 return (
-                  <InMenuOptionStuff
-                    inOptionsMenuRefSizes={inOptionsMenuRefSizes}
-                    liveMeasure={liveMeasure}
-                    menuOptions={menuOptions}
-                    option={option}
-                    inOptions={inOptions}
-                    onInOptionsUpdate={onInOptionsUpdate}
-                    setMenuOptions={setMenuOptions}
-                  />
+                  <OverlayOption
+                    onClick={() => {
+                      const updatedOptions = [
+                        ...outOptions.map(outOption => ({
+                          ...outOption,
+                          active: outOption.name === option.name,
+                        })),
+                      ];
+                      onOutOptionsUpdate(updatedOptions);
+                    }}
+                  >
+                    {option.name}
+                  </OverlayOption>
                 );
               })}
-          </OptionsContainer>
-          <MoreOptionsIconContainer
-            ref={inOptionsMenuRef}
-            onClick={() => {
-              setShowAdditionalOutOptions(false);
-              setShowAdditionalInOptions(!showAdditionalInOptions);
-            }}
-          >
-            {!showAdditionalInOptions && <IconChevronDown />}
-            {showAdditionalInOptions && <IconChevronUp />}
-          </MoreOptionsIconContainer>
-        </LeftCaseBar>
-        <MidCaseBar>
-          <div style={{ width: '40px' }}>{/* <IconRefreshCw /> */}</div>
-        </MidCaseBar>
-        <RightCaseBar>
-          <OptionsContainer>
-            {outOptions
-              .sort(a => {
-                if (a.activeClicked) return -1;
-                if (a.active) return -1;
-                return 0;
-              })
-              .map(option => {
+            </OptionsOverlay>
+          )}
+          {showAdditionalInOptions && (
+            <OptionsOverlay
+              minHeight={`${convertCardSizes.height}px`}
+              maxHeight={`${convertCardSizes.height}px`}
+            >
+              {menuOptions.map(option => {
                 return (
-                  <OutMenuOptionStuff
-                    outOptionsMenuRefSizes={outOptionsMenuRefSizes}
-                    liveMeasure={liveMeasure}
-                    menuOptions={menuOutOptions}
-                    option={option}
-                    outOptions={outOptions}
-                    onOutOptionsUpdate={onOutOptionsUpdate}
-                    setMenuOptions={setMenuOutOptions}
-                  />
+                  <OverlayOption
+                    onClick={() => {
+                      const updatedOptions = [
+                        ...inOptions.map(inOption => ({
+                          ...inOption,
+                          active: inOption.name === option.name,
+                        })),
+                      ];
+                      onInOptionsUpdate(updatedOptions);
+                    }}
+                  >
+                    {option.name}
+                  </OverlayOption>
                 );
               })}
-          </OptionsContainer>
-          <MoreOptionsIconContainer
-            right
-            ref={outOptionsMenuRef}
-            onClick={() => {
-              setShowAdditionalInOptions(false);
-              setShowAdditionalOutOptions(!showAdditionalOutOptions);
-            }}
-          >
-            {!showAdditionalOutOptions && <IconChevronDown />}
-            {showAdditionalOutOptions && <IconChevronUp />}
-          </MoreOptionsIconContainer>
-        </RightCaseBar>
-      </CaseBar>
-      <ConvertCardContent ref={convertCardRef}>
-        {showAdditionalOutOptions && (
-          <OptionsOverlay
-            minHeight={`${convertCardSizes.height}px`}
-            maxHeight={`${convertCardSizes.height}px`}
-          >
-            {menuOutOptions.map(option => {
-              return (
-                <OverlayOption
-                  onClick={() => {
-                    const updatedOptions = [
-                      ...outOptions.map(outOption => ({
-                        ...outOption,
-                        active: outOption.name === option.name,
-                      })),
-                    ];
-                    onOutOptionsUpdate(updatedOptions);
+            </OptionsOverlay>
+          )}
+          <Content>
+            <LeftContentContent>
+              <TextareaContainer>
+                <Textarea
+                  data-test="from-textarea"
+                  placeholder="..."
+                  rows={2}
+                  smallerFont={false}
+                  value={inValue}
+                  maxLength={100}
+                  onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
+                    if (
+                      event.target.value === null ||
+                      event.target.value === undefined
+                    )
+                      return;
+                    onInInput(event.target.value);
                   }}
-                >
-                  {option.name}
-                </OverlayOption>
-              );
-            })}
-          </OptionsOverlay>
-        )}
-        {showAdditionalInOptions && (
-          <OptionsOverlay
-            minHeight={`${convertCardSizes.height}px`}
-            maxHeight={`${convertCardSizes.height}px`}
-          >
-            {menuOptions.map(option => {
-              return (
-                <OverlayOption
-                  onClick={() => {
-                    const updatedOptions = [
-                      ...inOptions.map(inOption => ({
-                        ...inOption,
-                        active: inOption.name === option.name,
-                      })),
-                    ];
-                    onInOptionsUpdate(updatedOptions);
-                  }}
-                >
-                  {option.name}
-                </OverlayOption>
-              );
-            })}
-          </OptionsOverlay>
-        )}
-        <Content>
-          <LeftContentContent>
-            <TextareaContainer>
-              <Textarea
-                data-test="from-textarea"
-                placeholder="..."
-                rows={2}
-                smallerFont={false}
-                value={inValue}
-                maxLength={100}
-                onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
-                  if (
-                    event.target.value === null ||
-                    event.target.value === undefined
-                  )
-                    return;
-                  onInInput(event.target.value);
-                }}
-              />
-              <IconContainer onClick={() => onInInput('')}>
-                <IconX size={32} />
-              </IconContainer>
-            </TextareaContainer>
-          </LeftContentContent>
-        </Content>
-        <Content>
-          <LeftContentContent>
-            <TextareaContainer>
-              <Textarea
-                disabled
-                smallerFont={false}
-                showCopyCursor={true}
-                value={outValue}
-              />
-              <CopyToClipboard text={outValue} onCopy={() => {}}>
-                <IconContainer>
-                  <IconCopy size={24} />
+                />
+                <IconContainer onClick={() => onInInput('')}>
+                  <IconX size={32} />
                 </IconContainer>
-              </CopyToClipboard>
-            </TextareaContainer>
-          </LeftContentContent>
-        </Content>
-      </ConvertCardContent>
-    </ConvertCard>
+              </TextareaContainer>
+            </LeftContentContent>
+          </Content>
+          <Content>
+            <LeftContentContent>
+              <TextareaContainer>
+                <Textarea
+                  disabled
+                  smallerFont={false}
+                  showCopyCursor={true}
+                  value={outValue}
+                />
+                <CopyToClipboard text={outValue} onCopy={() => {}}>
+                  <IconContainer>
+                    <IconCopy size={24} />
+                  </IconContainer>
+                </CopyToClipboard>
+              </TextareaContainer>
+            </LeftContentContent>
+          </Content>
+        </ConvertCardContent>
+      </ConvertCard>
+    </>
   );
 };
