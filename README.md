@@ -10,6 +10,24 @@
 
 - [caseconverter.pro](https://caseconverter.pro/app)
 
+## Installation
+
+<details>
+  <summary>Install via NPM</summary>
+  
+  ```bash
+  npm install --save react-in-out-textarea
+  ```
+</details>
+
+<details>
+  <summary>Install via yarn</summary>
+  
+  ```bash
+  yarn add react-in-out-textarea
+  ```
+</details>
+
 ## Usage
 
 <details>
@@ -65,24 +83,6 @@ export const ExampleComponent = () => {
 };
 ```
 
-</details>
-
-## Installation
-
-<details>
-  <summary>Install via NPM</summary>
-  
-  ```bash
-  npm install --save react-in-out-textarea
-  ```
-</details>
-
-<details>
-  <summary>Install via yarn</summary>
-  
-  ```bash
-  yarn add react-in-out-textarea
-  ```
 </details>
 
 ## Development
