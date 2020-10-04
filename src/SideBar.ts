@@ -6,5 +6,4 @@ export const SideBar = styled.div`
   color: #14213d;
   overflow: hidden;
   position: relative;
-  justify-content: space-between;
 `;
