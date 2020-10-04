@@ -10157,6 +10157,17 @@ react-hotkeys@2.0.0:
   dependencies:
     prop-types "^15.6.1"
 
+react-in-out-textarea@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/react-in-out-textarea/-/react-in-out-textarea-0.0.3.tgz#c2a34084e12ed7ab0a62d873ed49c5d5225a3d5f"
+  integrity sha512-uqsC0cpqxnnQWvyAkwe9Vt4lXAEjcgH2eFjWjwFkmfq30wtApMNiwxVJhJRP/24TKHzEGUpF6X05yM/x0SryxA==
+  dependencies:
+    "@types/styled-components" "^5.1.3"
+    react-autosize-textarea "^7.1.0"
+    react-copy-to-clipboard "^5.0.2"
+    react-use-dimensions "^1.2.1"
+    styled-components "^5.2.0"
+
 react-inspector@^5.0.1:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/react-inspector/-/react-inspector-5.1.0.tgz#45a325e15f33e595be5356ca2d3ceffb7d6b8c3a"
