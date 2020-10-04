@@ -10,6 +10,24 @@
 
 - [caseconverter.pro](https://caseconverter.pro/app)
 
+## Installation
+
+<details>
+  <summary>Install via NPM</summary>
+  
+  ```bash
+  npm install --save react-in-out-textarea
+  ```
+</details>
+
+<details>
+  <summary>Install via yarn</summary>
+  
+  ```bash
+  yarn add react-in-out-textarea
+  ```
+</details>
+
 ## Usage
 
 <details>
@@ -48,16 +66,16 @@ export const ExampleComponent = () => {
     <InOutTextarea
       inValue={inValue}
       outValue={outValue}
-      onInInput={newValue => {
+      onInInput={(newValue) => {
         setInValue(newValue);
         setOutValue(newValue);
       }}
       inOptions={inOptions}
-      onInOptionsUpdate={newInOptions => {
+      onInOptionsUpdate={(newInOptions) => {
         setInOptions(newInOptions);
       }}
       outOptions={outOptions}
-      onOutOptionsUpdate={newOutOptions => {
+      onOutOptionsUpdate={(newOutOptions) => {
         setOutOptions(newOutOptions);
       }}
     />
@@ -112,6 +130,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://www.kevinpeters.net/about/"><img src="https://avatars1.githubusercontent.com/u/12736734?v=4" width="100px;" alt=""/><br /><sub><b>Kevin Peters</b></sub></a><br /><a href="#business-igeligel" title="Business development">💼</a> <a href="https://github.com/igeligel/react-in-out-textarea/commits?author=igeligel" title="Code">💻</a> <a href="#design-igeligel" title="Design">🎨</a> <a href="#infra-igeligel" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-igeligel" title="Maintenance">🚧</a> <a href="#question-igeligel" title="Answering Questions">💬</a> <a href="https://github.com/igeligel/react-in-out-textarea/pulls?q=is%3Apr+reviewed-by%3Aigeligel" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="https://codepen.io/SheWolf/"><img src="https://avatars3.githubusercontent.com/u/11381749?v=4" width="100px;" alt=""/><br /><sub><b>Amber</b></sub></a><br /><a href="https://github.com/igeligel/react-in-out-textarea/commits?author=SheW0lf" title="Code">💻</a></td>
     <td align="center"><a href="http://katieannabelle.dev"><img src="https://avatars0.githubusercontent.com/u/50029859?v=4" width="100px;" alt=""/><br /><sub><b>Katie</b></sub></a><br /><a href="https://github.com/igeligel/react-in-out-textarea/commits?author=katieraby" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/hambali999"><img src="https://avatars3.githubusercontent.com/u/61378823?v=4" width="100px;" alt=""/><br /><sub><b>chorongbali</b></sub></a><br /><a href="https://github.com/igeligel/react-in-out-textarea/commits?author=hambali999" title="Code">💻</a></td>
+    <td align="center"><a href="http://devcer.github.io/"><img src="https://avatars1.githubusercontent.com/u/3799600?v=4" width="100px;" alt=""/><br /><sub><b>Santosh Viswanatham</b></sub></a><br /><a href="https://github.com/igeligel/react-in-out-textarea/commits?author=devcer" title="Code">💻</a> <a href="#infra-devcer" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
   </tr>
 </table>
 
