@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ThemeProvider } from 'styled-components';
 import { InOutTextarea, Props, InOptions, OutOptions } from '../src';
 
 export default {
@@ -135,3 +136,18 @@ export const Default = (props?: Partial<Props>) => {
     </div>
   );
 };
+
+const fonts = ['monospace', 'Roboto', 'Arial', 'Comic Sans']
+export const CustomFont = (props?: Partial<Props>) => {
+  const [font, setFont] = React.useState(fonts[0]);
+  return (
+    <ThemeProvider theme={{ font }}>
+      select font:{' '}
+      <select onChange={(v) => setFont(v.target.value)}>
+        {fonts.map(f => <option value={f}>{f}</option>)}
+      </select>
+      <hr/>
+      <Default/>
+    </ThemeProvider>
+  );
+}
