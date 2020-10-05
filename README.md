@@ -67,6 +67,60 @@ export const ExampleComponent = () => {
 
 </details>
 
+<details>
+  <summary>React + Javascript</summary>
+  
+  [CodeSandbox Example](https://codesandbox.io/s/react-in-out-textarea-javascript-react-kcl37?file=/src/ExampleComponent.js)
+
+  Code Example:
+
+  ```js
+  import React, { useState } from "react";
+  import { InOutTextarea } from "react-in-out-textarea";
+
+  export const ExampleComponent = () => {
+    const [inValue, setInValue] = useState("");
+    const [outValue, setOutValue] = useState("");
+    const [inOptions, setInOptions] = useState([
+      {
+        name: "English",
+        active: true
+      },
+      {
+        name: "German",
+        active: false
+      }
+    ]);
+    const [outOptions, setOutOptions] = useState([
+      {
+        name: "Chinese",
+        active: true,
+        activeClicked: false
+      }
+    ]);
+
+    return (
+      <InOutTextarea
+        inValue={inValue}
+        outValue={outValue}
+        onInInput={(newValue) => {
+          setInValue(newValue);
+          setOutValue(newValue);
+        }}
+        inOptions={inOptions}
+        onInOptionsUpdate={(newInOptions) => {
+          setInOptions(newInOptions);
+        }}
+        outOptions={outOptions}
+        onOutOptionsUpdate={(newOutOptions) => {
+          setOutOptions(newOutOptions);
+        }}
+      />
+    );
+  };
+  ```
+</details>
+
 ## Development
 
 To start developing you need the following tools installed:
