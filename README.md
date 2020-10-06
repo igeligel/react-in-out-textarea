@@ -6,6 +6,22 @@
 
 ![](./docs/showcase.png)
 
+## Features
+
+react-in-out-textarea is a highly customisable React component, for all of your input and output text needs. 
+
+Some of the unique features this component offers include:
+
+- Textarea fields for input and output
+- Customisable input and output labels
+- Selection of input and output types
+- Dropdown to show all your labels when they won't fit on one line
+- Fully controllable
+- Ability to copy the output text to your clipboard
+- Minimalistic, visually pleasing style 
+- Variable content length (coming soon!)
+
+
 ## Used by
 
 - [caseconverter.pro](https://caseconverter.pro/app)
@@ -158,7 +174,7 @@ After that just type:
 yarn storybook
 ```
 
-And open http://localhost:6006/. That should give you the storybook preview.s
+And open http://localhost:6006/. That should give you the storybook preview.
 
 ## Storybook
 
