@@ -73,11 +73,11 @@ export const ExampleComponent = () => {
 | --- | --- | --- |
 | inValue  | string  | The value that is shown on the left-handed side. |
 | outValue  | string  | The value that is shown on the right-handed side. |
-| inOptions |  |  |
-| onInInput | string |  |
-| onInOptionsUpdate |  |  |
-| outOptions |  |  |
-| onOutOptionsUpdate |  |  |
+| inOptions | array | An array of options filled with names marked true or false |
+| onInInput | function | Called to listen to when the text on the left-hand side changes |
+| onInOptionsUpdate | function | Updated with new options as the parameter when inOptions language clicked |
+| outOptions | array | An array of options filled with names marked true or false and an activeClicked boolean |
+| onOutOptionsUpdate | function | Updated with new options as the parameter when outOptions language clicked |
 
 ## Development
 
