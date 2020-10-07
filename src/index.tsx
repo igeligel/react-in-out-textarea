@@ -10,9 +10,9 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { InMenuOptionStuff } from './InMenuOptionStuff';
 import { OutMenuOptionStuff } from './OutMenuOptionStuff';
 import { IInOption, InOptions, IOutOption, OutOptions } from './types';
-import { Content } from './Content';
 import { CaseBar } from './CaseBar';
 import { SideBar } from './SideBar';
+import { TextAreaContent } from './TextAreaContent';
 
 export { IInOption, IOutOption, InOptions, OutOptions };
 
@@ -52,21 +52,6 @@ const OptionsContainer = styled.div`
   @media (max-width: 576px) {
     display: none;
   }
-`;
-
-const LeftContentContent = styled.div`
-  padding-left: 28px;
-  padding-top: 20px;
-  padding-bottom: 16px;
-  padding-right: 14px;
-  // border-right: 1px solid rgba(20, 33, 61, 0.2);
-`;
-
-const TextareaContainer = styled.div`
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  padding-bottom: 26px;
 `;
 
 type ExampleTextProps = {
@@ -342,48 +327,40 @@ export const InOutTextarea: FC<Props> = props => {
             })}
           </OptionsOverlay>
         )}
-        <Content>
-          <LeftContentContent>
-            <TextareaContainer>
-              <Textarea
-                data-test="from-textarea"
-                placeholder="..."
-                rows={2}
-                smallerFont={false}
-                value={inValue}
-                maxLength={100}
-                onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
-                  if (
-                    event.target.value === null ||
-                    event.target.value === undefined
-                  )
-                    return;
-                  onInInput(event.target.value);
-                }}
-              />
-              <IconContainer onClick={() => onInInput('')}>
-                <IconX size={32} />
-              </IconContainer>
-            </TextareaContainer>
-          </LeftContentContent>
-        </Content>
-        <Content>
-          <LeftContentContent>
-            <TextareaContainer>
-              <Textarea
-                disabled
-                smallerFont={false}
-                showCopyCursor={true}
-                value={outValue}
-              />
-              <CopyToClipboard text={outValue} onCopy={() => {}}>
-                <IconContainer>
-                  <IconCopy size={24} />
-                </IconContainer>
-              </CopyToClipboard>
-            </TextareaContainer>
-          </LeftContentContent>
-        </Content>
+        <TextAreaContent>
+          <Textarea
+            data-test="from-textarea"
+            placeholder="..."
+            rows={2}
+            smallerFont={false}
+            value={inValue}
+            maxLength={100}
+            onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
+              if (
+                event.target.value === null ||
+                event.target.value === undefined
+              )
+                return;
+              onInInput(event.target.value);
+            }}
+          />
+          <IconContainer onClick={() => onInInput('')}>
+            <IconX size={32} />
+          </IconContainer>
+        </TextAreaContent>
+        <TextAreaContent>
+          <Textarea
+            disabled
+            smallerFont={false}
+            showCopyCursor={true}
+            value={outValue}
+          />
+          <CopyToClipboard text={outValue} onCopy={() => {}}>
+            <IconContainer>
+              <IconCopy size={24} />
+            </IconContainer>
+          </CopyToClipboard>
+        </TextAreaContent>
       </ConvertCardContent>
     </ConvertCard>
   );
