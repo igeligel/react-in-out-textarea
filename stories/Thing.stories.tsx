@@ -4,6 +4,14 @@ import { InOutTextarea, Props, InOptions, OutOptions } from '../src';
 
 export default {
   title: 'Welcome',
+  argTypes: {
+    font: {
+      control: {
+        type: 'select',
+        options: ['monospace', 'Roboto', 'Arial', 'Comic Sans'],
+      },
+    },
+  },
 };
 
 // By passing optional props to this story, you can control the props of the component when
@@ -137,17 +145,18 @@ export const Default = (props?: Partial<Props>) => {
   );
 };
 
-const fonts = ['monospace', 'Roboto', 'Arial', 'Comic Sans']
-export const CustomFont = (props?: Partial<Props>) => {
-  const [font, setFont] = React.useState(fonts[0]);
+type  CustomFontProps = Partial<Props> & {font: string};
+
+export const _CustomFont = ({font, ...args}: CustomFontProps) => {
   return (
     <ThemeProvider theme={{ font }}>
-      select font:{' '}
-      <select onChange={(v) => setFont(v.target.value)}>
-        {fonts.map(f => <option value={f}>{f}</option>)}
-      </select>
-      <hr/>
-      <Default/>
+      <Default {...args}/>
     </ThemeProvider>
   );
+}
+
+export const CustomFont = _CustomFont.bind({});
+
+CustomFont.args = {
+  font: 'Roboto'
 }
