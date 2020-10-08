@@ -13,6 +13,7 @@ import { IInOption, InOptions, IOutOption, OutOptions } from './types';
 import { CaseBar } from './CaseBar';
 import { SideBar } from './SideBar';
 import { TextAreaContent } from './TextAreaContent';
+import { TextAreaWrapper } from './TextAreaWrapper';
 
 export { IInOption, IOutOption, InOptions, OutOptions };
 
@@ -328,33 +329,37 @@ export const InOutTextarea: FC<Props> = props => {
           </OptionsOverlay>
         )}
         <TextAreaContent>
-          <Textarea
-            data-test="from-textarea"
-            placeholder="..."
-            rows={2}
-            smallerFont={false}
-            value={inValue}
-            maxLength={100}
-            onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
-              if (
-                event.target.value === null ||
-                event.target.value === undefined
-              )
-                return;
-              onInInput(event.target.value);
-            }}
-          />
+          <TextAreaWrapper>
+            <Textarea
+              data-test="from-textarea"
+              placeholder="..."
+              rows={2}
+              smallerFont={false}
+              value={inValue}
+              maxLength={100}
+              onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
+                if (
+                  event.target.value === null ||
+                  event.target.value === undefined
+                )
+                  return;
+                onInInput(event.target.value);
+              }}
+            />
+          </TextAreaWrapper>
           <IconContainer onClick={() => onInInput('')}>
             <IconX size={32} />
           </IconContainer>
         </TextAreaContent>
         <TextAreaContent>
-          <Textarea
-            disabled
-            smallerFont={false}
-            showCopyCursor={true}
-            value={outValue}
-          />
+          <TextAreaWrapper>
+            <Textarea
+              disabled
+              smallerFont={false}
+              showCopyCursor={true}
+              value={outValue}
+            />
+          </TextAreaWrapper>
           <CopyToClipboard text={outValue} onCopy={() => {}}>
             <IconContainer>
               <IconCopy size={24} />
