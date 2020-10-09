@@ -44,6 +44,18 @@ Some of the unique features this component offers include:
   ```
 </details>
 
+## Props
+
+| Name  | Type | Description |
+| --- | --- | --- |
+| inValue  | string  | The value that is shown on the left-handed side. |
+| outValue  | string  | The value that is shown on the right-handed side. |
+| inOptions | array | An array of options filled with names marked true or false |
+| onInInput | function | Called to listen to when the text on the left-hand side changes |
+| onInOptionsUpdate | function | Updated with new options as the parameter when inOptions language clicked |
+| outOptions | array | An array of options filled with names marked true or false and an activeClicked boolean |
+| onOutOptionsUpdate | function | Updated with new options as the parameter when outOptions language clicked |
+
 ## Usage
 
 <details>
@@ -100,19 +112,6 @@ export const ExampleComponent = () => {
 ```
 
 </details>
-
-
-## Props
-
-| Name  | Type | Description |
-| --- | --- | --- |
-| inValue  | string  | The value that is shown on the left-handed side. |
-| outValue  | string  | The value that is shown on the right-handed side. |
-| inOptions | array | An array of options filled with names marked true or false |
-| onInInput | function | Called to listen to when the text on the left-hand side changes |
-| onInOptionsUpdate | function | Updated with new options as the parameter when inOptions language clicked |
-| outOptions | array | An array of options filled with names marked true or false and an activeClicked boolean |
-| onOutOptionsUpdate | function | Updated with new options as the parameter when outOptions language clicked |
 
 <details>
   <summary>React + Javascript</summary>
