@@ -333,7 +333,6 @@ export const InOutTextarea: FC<Props> = props => {
         <TextAreaContent>
           <TextAreaWrapper>
             <Textarea
-              type="text"
               data-test="from-textarea"
               placeholder="..."
               rows={2}
