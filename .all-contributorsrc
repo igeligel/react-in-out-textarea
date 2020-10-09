@@ -38,6 +38,53 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "hambali999",
+      "name": "chorongbali",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/61378823?v=4",
+      "profile": "https://github.com/hambali999",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "devcer",
+      "name": "Santosh Viswanatham",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/3799600?v=4",
+      "profile": "http://devcer.github.io/",
+      "contributions": [
+        "code",
+        "infra"
+      ]
+    },
+    {
+      "login": "xen0m29",
+      "name": "xen0m29",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/44066914?v=4",
+      "profile": "https://github.com/xen0m29",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "merelj",
+      "name": "merelj",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3993495?v=4",
+      "profile": "https://github.com/merelj",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Silver292",
+      "name": "Tom Scott",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5542588?v=4",
+      "profile": "https://github.com/Silver292",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,

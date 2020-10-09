@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
+import { ThemeProvider } from 'styled-components';
 import { InOutTextarea, Props, InOptions, OutOptions } from '../src';
 
 export default {
   title: 'Welcome',
+  argTypes: {
+    font: {
+      control: {
+        type: 'select',
+        options: ['monospace', 'Roboto', 'Arial', 'Comic Sans'],
+      },
+    },
+  },
 };
 
 // By passing optional props to this story, you can control the props of the component when
@@ -135,3 +144,19 @@ export const Default = (props?: Partial<Props>) => {
     </div>
   );
 };
+
+type  CustomFontProps = Partial<Props> & {font: string};
+
+export const _CustomFont = ({font, ...args}: CustomFontProps) => {
+  return (
+    <ThemeProvider theme={{ font }}>
+      <Default {...args}/>
+    </ThemeProvider>
+  );
+}
+
+export const CustomFont = _CustomFont.bind({});
+
+CustomFont.args = {
+  font: 'Roboto'
+}
