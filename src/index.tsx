@@ -175,6 +175,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   onInOptionsUpdate: (newInOptions: InOptions) => void;
   outOptions: OutOptions;
   onOutOptionsUpdate: (newOutOptions: OutOptions) => void;
+  maxContentLength?: number;
 }
 
 export const InOutTextarea: FC<Props> = props => {
@@ -204,6 +205,7 @@ export const InOutTextarea: FC<Props> = props => {
     outOptions,
     onOutOptionsUpdate,
     outValue,
+    maxContentLength,
   } = props;
 
   return (
@@ -331,12 +333,13 @@ export const InOutTextarea: FC<Props> = props => {
         <TextAreaContent>
           <TextAreaWrapper>
             <Textarea
+              type="text"
               data-test="from-textarea"
               placeholder="..."
               rows={2}
               smallerFont={false}
               value={inValue}
-              maxLength={100}
+              maxLength={maxContentLength}
               onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
                 if (
                   event.target.value === null ||

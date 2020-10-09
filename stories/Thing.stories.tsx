@@ -145,7 +145,7 @@ export const Default = (props?: Partial<Props>) => {
   );
 };
 
-type  CustomFontProps = Partial<Props> & {font: string};
+type CustomFontProps = Partial<Props> & {font: string};
 
 export const _CustomFont = ({font, ...args}: CustomFontProps) => {
   return (
@@ -159,4 +159,23 @@ export const CustomFont = _CustomFont.bind({});
 
 CustomFont.args = {
   font: 'Roboto'
+}
+
+export const WithLengthLimit = () => {
+  const [inValue, setInValue] = useState<string>("Has a limit = to 20!")
+
+  return (
+    <div style={{ maxWidth: '1100px' }}>
+      <InOutTextarea
+        inValue={inValue}
+        outValue={inValue.split("").reverse().join("")}
+        inOptions={[{ active: true, name: "English" }]}
+        outOptions={[{ active: true, name: "German", activeClicked: true }]}
+        onInInput={setInValue}
+        onInOptionsUpdate={() => true}
+        onOutOptionsUpdate={() => true}
+        maxContentLength={20}
+      />
+    </div>
+  );
 }
