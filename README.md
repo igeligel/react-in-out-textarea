@@ -221,6 +221,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/Silver292"><img src="https://avatars3.githubusercontent.com/u/5542588?v=4" width="100px;" alt=""/><br /><sub><b>Tom Scott</b></sub></a><br /><a href="https://github.com/igeligel/react-in-out-textarea/commits?author=Silver292" title="Code">💻</a> <a href="https://github.com/igeligel/react-in-out-textarea/commits?author=Silver292" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/aman601"><img src="https://avatars1.githubusercontent.com/u/22266039?v=4" width="100px;" alt=""/><br /><sub><b>aman601</b></sub></a><br /><a href="https://github.com/igeligel/react-in-out-textarea/commits?author=aman601" title="Documentation">📖</a></td>
   </tr>
 </table>
 
