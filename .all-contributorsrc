@@ -121,6 +121,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "ggolubic",
+      "name": "Gabrijel Golubić",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/25390319?v=4",
+      "profile": "https://ggolubic.github.io/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
