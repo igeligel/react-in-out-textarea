@@ -19,7 +19,7 @@ Some of the unique features this component offers include:
 - Fully controllable
 - Ability to copy the output text to your clipboard
 - Minimalistic, visually pleasing style 
-- Variable content length (coming soon!)
+- Variable content length
 
 
 ## Used by
@@ -46,15 +46,16 @@ Some of the unique features this component offers include:
 
 ## Props
 
-| Name  | Type | Description |
-| --- | --- | --- |
-| inValue  | string  | The value that is shown on the left-handed side. |
-| outValue  | string  | The value that is shown on the right-handed side. |
-| inOptions | array | An array of options filled with names marked true or false |
-| onInInput | function | Called to listen to when the text on the left-hand side changes |
-| onInOptionsUpdate | function | Updated with new options as the parameter when inOptions language clicked |
-| outOptions | array | An array of options filled with names marked true or false and an activeClicked boolean |
-| onOutOptionsUpdate | function | Updated with new options as the parameter when outOptions language clicked |
+| Name  | Type | Required |  Description |
+| --- | --- | --- | --- |
+| inValue  | string  | ✔️ | The value that is shown on the left-handed side. |
+| outValue  | string  | ✔️ | The value that is shown on the right-handed side. |
+| maxContentLength | number | ❌  | Value that defines the maximum number of characters allowed in the text area. |
+| inOptions | array | ✔️ | An array of options filled with names marked true or false |
+| onInInput | function | ✔️ | Called to listen to when the text on the left-hand side changes | ✔️ |
+| onInOptionsUpdate | function | ✔️ | Updated with new options as the parameter when inOptions language clicked |
+| outOptions | array | ✔️ | An array of options filled with names marked true or false and an activeClicked boolean |
+| onOutOptionsUpdate | function | ✔️ | Updated with new options as the parameter when outOptions language clicked |
 
 ## Usage
 
