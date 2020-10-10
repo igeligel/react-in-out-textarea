@@ -198,10 +198,8 @@ export const InOutTextarea: FC<Props> = props => {
   >(false);
 
   const onOutMoreOptionsClick = useCallback(()=> {
-    () => {
       setShowAdditionalOutOptions(false);
       setShowAdditionalInOptions(!showAdditionalInOptions);
-    }
   },[])
 
   const {
