@@ -14,6 +14,7 @@ import { CaseBar } from './CaseBar';
 import { SideBar } from './SideBar';
 import { TextAreaContent } from './TextAreaContent';
 import { TextAreaWrapper } from './TextAreaWrapper';
+import { OptionsOverlay } from './OptionsOverlay';
 
 export { IInOption, IOutOption, InOptions, OutOptions };
 
@@ -118,50 +119,6 @@ const MoreOptionsIconContainer = styled.div<IMoreOptionsIconContainer>`
 
   :hover {
     color: hsl(220deg 15% 50%);
-  }
-`;
-
-interface OptionsOverlay {
-  minHeight?: string;
-  maxHeight?: string;
-}
-
-const OptionsOverlay = styled.div<OptionsOverlay>`
-  position: absolute;
-  width: 100%;
-  min-height: ${props => props.minHeight || 'initial'};
-  max-height: ${props => props.maxHeight || 'initial'};
-  background-color: white;
-  opacity: 0.99;
-  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
-  border-bottom-right-radius: 8px;
-  border-bottom-left-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  padding-left: 10px;
-  padding-right: 20px;
-  box-sizing: border-box;
-  padding-top: 8px;
-  padding-bottom: 8px;
-`;
-
-const OverlayOption = styled.div`
-  box-sizing: border-box;
-  font-size: 14px;
-  font-family: Roboto;
-  line-height: 30px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 10px;
-  display: inline-block;
-  min-width: 15%;
-  cursor: pointer;
-
-  :hover {
-    border-radius: 3px;
-    background-color: #f5f5f5;
   }
 `;
 
@@ -284,51 +241,19 @@ export const InOutTextarea: FC<Props> = props => {
       <ConvertCardContent ref={convertCardRef}>
         {showAdditionalOutOptions && (
           <OptionsOverlay
-            minHeight={`${convertCardSizes.height}px`}
-            maxHeight={`${convertCardSizes.height}px`}
-          >
-            {menuOutOptions.map(option => {
-              return (
-                <OverlayOption
-                  onClick={() => {
-                    const updatedOptions = [
-                      ...outOptions.map(outOption => ({
-                        ...outOption,
-                        active: outOption.name === option.name,
-                      })),
-                    ];
-                    onOutOptionsUpdate(updatedOptions);
-                  }}
-                >
-                  {option.name}
-                </OverlayOption>
-              );
-            })}
-          </OptionsOverlay>
+            convertCardSizes={convertCardSizes}
+            shownMenuOptions={menuOutOptions}
+            allMenuOptions={outOptions}
+            onAllMenuOptionsUpdate={onOutOptionsUpdate}
+          />
         )}
         {showAdditionalInOptions && (
           <OptionsOverlay
-            minHeight={`${convertCardSizes.height}px`}
-            maxHeight={`${convertCardSizes.height}px`}
-          >
-            {menuOptions.map(option => {
-              return (
-                <OverlayOption
-                  onClick={() => {
-                    const updatedOptions = [
-                      ...inOptions.map(inOption => ({
-                        ...inOption,
-                        active: inOption.name === option.name,
-                      })),
-                    ];
-                    onInOptionsUpdate(updatedOptions);
-                  }}
-                >
-                  {option.name}
-                </OverlayOption>
-              );
-            })}
-          </OptionsOverlay>
+            convertCardSizes={convertCardSizes}
+            shownMenuOptions={menuOptions}
+            allMenuOptions={inOptions}
+            onAllMenuOptionsUpdate={onInOptionsUpdate}
+          />
         )}
         <TextAreaContent>
           <TextAreaWrapper>
