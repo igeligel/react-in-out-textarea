@@ -77,7 +77,7 @@ type ExampleTextProps = {
   showCopyCursor?: boolean;
 };
 
-const Textarea = styled(TextareaAutosize) <ExampleTextProps>`
+const Textarea = styled(TextareaAutosize)<ExampleTextProps>`
   box-sizing: border-box;
   border: 0;
   resize: none;
@@ -90,9 +90,9 @@ const Textarea = styled(TextareaAutosize) <ExampleTextProps>`
 
   ::placeholder {
     color: ${props =>
-    props.theme.main === 'dark'
-      ? 'hsl(221, 51%, 64%)'
-      : 'rgba(20, 33, 61, 0.4)'};
+      props.theme.main === 'dark'
+        ? 'hsl(221, 51%, 64%)'
+        : 'rgba(20, 33, 61, 0.4)'};
   }
 
   :focus {
@@ -378,7 +378,7 @@ export const InOutTextarea: FC<Props> = props => {
                 showCopyCursor={true}
                 value={outValue}
               />
-              <CopyToClipboard text={outValue} onCopy={() => { }}>
+              <CopyToClipboard text={outValue} onCopy={() => {}}>
                 <IconContainer>
                   <IconCopy size={24} />
                 </IconContainer>
