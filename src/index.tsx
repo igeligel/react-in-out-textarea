@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes, useState } from 'react';
+import React, { FC, HTMLAttributes, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import TextareaAutosize from 'react-autosize-textarea';
 import useDimensions from 'react-use-dimensions';
@@ -197,6 +197,13 @@ export const InOutTextarea: FC<Props> = props => {
     boolean
   >(false);
 
+  const onOutMoreOptionsClick = useCallback(()=> {
+    () => {
+      setShowAdditionalOutOptions(false);
+      setShowAdditionalInOptions(!showAdditionalInOptions);
+    }
+  },[])
+
   const {
     inOptions,
     inValue,
@@ -234,10 +241,7 @@ export const InOutTextarea: FC<Props> = props => {
           </OptionsContainer>
           <MoreOptionsIconContainer
             ref={inOptionsMenuRef}
-            onClick={() => {
-              setShowAdditionalOutOptions(false);
-              setShowAdditionalInOptions(!showAdditionalInOptions);
-            }}
+            onClick={onOutMoreOptionsClick}
           >
             {!showAdditionalInOptions && <IconChevronDown />}
             {showAdditionalInOptions && <IconChevronUp />}
