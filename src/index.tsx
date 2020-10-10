@@ -2,7 +2,7 @@ import React, { FC, HTMLAttributes, useState } from 'react';
 import styled from 'styled-components';
 import TextareaAutosize from 'react-autosize-textarea';
 import useDimensions from 'react-use-dimensions';
-import ConvertCard from './styled/ConvertCard';
+import { ConvertCard } from './styled/ConvertCard';
 import { IconX } from './IconX';
 import { IconCopy } from './IconCopy';
 import { IconChevronDown } from './IconChevronDown';

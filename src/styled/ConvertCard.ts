@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const ConvertCard = styled.div`
+export const ConvertCard = styled.div`
   font-family: Roboto, sans-serif;
   min-height: 50px;
   background-color: white;
@@ -17,5 +17,3 @@ const ConvertCard = styled.div`
     return null;
   }}
 `;
-
-export default ConvertCard;
