@@ -228,6 +228,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://ggolubic.github.io/"><img src="https://avatars0.githubusercontent.com/u/25390319?v=4" width="100px;" alt=""/><br /><sub><b>Gabrijel Golubić</b></sub></a><br /><a href="https://github.com/igeligel/react-in-out-textarea/commits?author=ggolubic" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/Tshamp7"><img src="https://avatars1.githubusercontent.com/u/54377075?v=4" width="100px;" alt=""/><br /><sub><b>Tom Shamp</b></sub></a><br /><a href="https://github.com/igeligel/react-in-out-textarea/commits?author=Tshamp7" title="Code">💻</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/binkpitch"><img src="https://avatars0.githubusercontent.com/u/20456165?v=4" width="100px;" alt=""/><br /><sub><b>Bink</b></sub></a><br /><a href="https://github.com/igeligel/react-in-out-textarea/commits?author=binkpitch" title="Code">💻</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-enable -->
