@@ -137,10 +137,15 @@ export const InOutTextarea: FC<Props> = props => {
     boolean
   >(false);
 
-  const onOutMoreOptionsClick = useCallback(() => {
+  const onInMoreOptionsClick = useCallback(() => {
     setShowAdditionalOutOptions(false);
     setShowAdditionalInOptions(!showAdditionalInOptions);
   }, [showAdditionalInOptions]);
+
+  const onOutMoreOptionsClick = useCallback(() => {
+    setShowAdditionalInOptions(false);
+    setShowAdditionalOutOptions(!showAdditionalOutOptions);
+  }, [showAdditionalOutOptions]);
 
   const {
     inOptions,
@@ -179,7 +184,7 @@ export const InOutTextarea: FC<Props> = props => {
           </OptionsContainer>
           <MoreOptionsIconContainer
             ref={inOptionsMenuRef}
-            onClick={onOutMoreOptionsClick}
+            onClick={onInMoreOptionsClick}
           >
             {!showAdditionalInOptions && <IconChevronDown />}
             {showAdditionalInOptions && <IconChevronUp />}
@@ -213,10 +218,7 @@ export const InOutTextarea: FC<Props> = props => {
           <MoreOptionsIconContainer
             right
             ref={outOptionsMenuRef}
-            onClick={() => {
-              setShowAdditionalInOptions(false);
-              setShowAdditionalOutOptions(!showAdditionalOutOptions);
-            }}
+            onClick={onOutMoreOptionsClick}
           >
             {!showAdditionalOutOptions && <IconChevronDown />}
             {showAdditionalOutOptions && <IconChevronUp />}
