@@ -49,19 +49,24 @@ const Textarea = styled(TextareaAutosize)<ExampleTextProps>`
   border: 0;
   resize: none;
   flex-grow: 1;
-  color: ${props => (props.theme.main === 'dark' ? '#fff' : '#14213d')};
+  color: ${(props) => (props.theme.main === "dark" ? "#fff" : "#14213d")};
   background-color: transparent;
-  font-family: ${props =>
-    props.theme && props.theme.font ? props.theme.font : 'Roboto'};
-  font-size: ${props => (props.smallerFont ? '1.2em' : '1.61em')};
-  ${props => (props.showCopyCursor ? 'cursor: text;' : '')};
+  font-family: ${(props) =>
+    props.theme && props.theme.font ? props.theme.font : "Roboto"};
+  font-size: ${(props) => (props.smallerFont ? "1.2em" : "1.61em")};
+  ${(props) => (props.showCopyCursor ? "cursor: text;" : "")};
   width: 100%;
+  min-height: 64px;
+
+  @media (max-width: 720px) {
+    min-height: auto;
+  }
 
   ::placeholder {
-    color: ${props =>
-      props.theme.main === 'dark'
-        ? 'hsl(221, 51%, 64%)'
-        : 'rgba(20, 33, 61, 0.4)'};
+    color: ${(props) =>
+      props.theme.main === "dark"
+        ? "hsl(221, 51%, 64%)"
+        : "rgba(20, 33, 61, 0.4)"};
   }
 
   :focus {
@@ -119,7 +124,8 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   maxContentLength?: number;
 }
 
-export const InOutTextarea: FC<Props> = props => {
+export const InOutTextarea: FC<Props> = (props) => {
+  return
   const [menuOptions, setMenuOptions] = useState<InOptions>([]);
   const [menuOutOptions, setMenuOutOptions] = useState<OutOptions>([]);
   const [inOptionsMenuRef, inOptionsMenuRefSizes] = useDimensions({
@@ -248,7 +254,6 @@ export const InOutTextarea: FC<Props> = props => {
             <Textarea
               data-test="from-textarea"
               placeholder="..."
-              rows={2}
               smallerFont={false}
               value={inValue}
               maxLength={maxContentLength}
@@ -266,7 +271,7 @@ export const InOutTextarea: FC<Props> = props => {
             <IconX size={32} />
           </IconContainer>
         </TextAreaContent>
-        <TextAreaContent>
+        </TextAreaContent>
           <TextAreaWrapper>
             <Textarea
               disabled
@@ -283,5 +288,7 @@ export const InOutTextarea: FC<Props> = props => {
         </TextAreaContent>
       </ConvertCardContent>
     </ConvertCard>
+    </TextAreaContent>
+    </>
   );
 };
