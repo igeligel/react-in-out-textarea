@@ -15,6 +15,7 @@ import { CaseBar } from './CaseBar';
 import { SideBar } from './SideBar';
 import { TextAreaContent } from './TextAreaContent';
 import { TextAreaWrapper } from './TextAreaWrapper';
+import { Spacer } from './Spacer';
 import { OptionsOverlay } from './OptionsOverlay';
 
 export { IInOption, IOutOption, InOptions, OutOptions };
@@ -28,8 +29,6 @@ const ConvertCardContent = styled.div`
     flex-direction: column;
   }
 `;
-
-const MidCaseBar = styled.div``;
 
 const OptionsContainer = styled.div`
   display: flex;
@@ -191,9 +190,7 @@ export const InOutTextarea: FC<Props> = props => {
             {showAdditionalInOptions && <IconChevronUp />}
           </MoreOptionsIconContainer>
         </SideBar>
-        <MidCaseBar>
-          <div style={{ width: '40px' }}>{/* <IconRefreshCw /> */}</div>
-        </MidCaseBar>
+        <Spacer />
         <SideBar>
           <OptionsContainer>
             {outOptions
