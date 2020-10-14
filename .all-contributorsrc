@@ -103,6 +103,51 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "av-dx",
+      "name": "Aashwin Vaish",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/56360160?v=4",
+      "profile": "https://github.com/av-dx",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "silltho",
+      "name": "Thomas Siller",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/5812228?v=4",
+      "profile": "https://silltho.github.io/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ggolubic",
+      "name": "Gabrijel Golubić",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/25390319?v=4",
+      "profile": "https://ggolubic.github.io/",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "Tshamp7",
+      "name": "Tom Shamp",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/54377075?v=4",
+      "profile": "https://github.com/Tshamp7",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "binkpitch",
+      "name": "Bink",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/20456165?v=4",
+      "profile": "https://github.com/binkpitch",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

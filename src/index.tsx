@@ -1,7 +1,8 @@
-import React, { FC, HTMLAttributes, useState } from 'react';
+import React, { FC, HTMLAttributes, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import TextareaAutosize from 'react-autosize-textarea';
 import useDimensions from 'react-use-dimensions';
+import { ConvertCard } from './styled/ConvertCard';
 import { IconX } from './IconX';
 import { IconCopy } from './IconCopy';
 import { IconChevronDown } from './IconChevronDown';
@@ -15,26 +16,9 @@ import { SideBar } from './SideBar';
 import { TextAreaContent } from './TextAreaContent';
 import { TextAreaWrapper } from './TextAreaWrapper';
 import { Spacer } from './Spacer';
+import { OptionsOverlay } from './OptionsOverlay';
 
 export { IInOption, IOutOption, InOptions, OutOptions };
-
-const ConvertCard = styled.div`
-  font-family: Roboto, sans-serif;
-  min-height: 50px;
-  background-color: white;
-  box-shadow: ${props =>
-    props.theme.main === 'dark'
-      ? '0 1px 4px 0 rgb(41, 57, 93)'
-      : '0 1px 4px 0 rgba(0, 0, 0, 0.37)'};
-  border-radius: 8px;
-
-  ${props => {
-    if (props.theme.main === 'dark') {
-      return 'border: 1px solid hsl(221, 25%, 65%)';
-    }
-    return null;
-  }}
-`;
 
 const ConvertCardContent = styled.div`
   width: 100%;
@@ -70,6 +54,7 @@ const Textarea = styled(TextareaAutosize)<ExampleTextProps>`
     props.theme && props.theme.font ? props.theme.font : 'Roboto'};
   font-size: ${props => (props.smallerFont ? '1.2em' : '1.61em')};
   ${props => (props.showCopyCursor ? 'cursor: text;' : '')};
+  width: 100%;
 
   ::placeholder {
     color: ${props =>
@@ -120,50 +105,6 @@ const MoreOptionsIconContainer = styled.div<IMoreOptionsIconContainer>`
   }
 `;
 
-interface OptionsOverlay {
-  minHeight?: string;
-  maxHeight?: string;
-}
-
-const OptionsOverlay = styled.div<OptionsOverlay>`
-  position: absolute;
-  width: 100%;
-  min-height: ${props => props.minHeight || 'initial'};
-  max-height: ${props => props.maxHeight || 'initial'};
-  background-color: white;
-  opacity: 0.99;
-  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
-  border-bottom-right-radius: 8px;
-  border-bottom-left-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  padding-left: 10px;
-  padding-right: 20px;
-  box-sizing: border-box;
-  padding-top: 8px;
-  padding-bottom: 8px;
-`;
-
-const OverlayOption = styled.div`
-  box-sizing: border-box;
-  font-size: 14px;
-  font-family: Roboto;
-  line-height: 30px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 10px;
-  display: inline-block;
-  min-width: 15%;
-  cursor: pointer;
-
-  :hover {
-    border-radius: 3px;
-    background-color: #f5f5f5;
-  }
-`;
-
 const liveMeasure = true;
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -195,6 +136,16 @@ export const InOutTextarea: FC<Props> = props => {
   const [showAdditionalOutOptions, setShowAdditionalOutOptions] = useState<
     boolean
   >(false);
+
+  const onInMoreOptionsClick = useCallback(() => {
+    setShowAdditionalOutOptions(false);
+    setShowAdditionalInOptions(!showAdditionalInOptions);
+  }, [showAdditionalInOptions]);
+
+  const onOutMoreOptionsClick = useCallback(() => {
+    setShowAdditionalInOptions(false);
+    setShowAdditionalOutOptions(!showAdditionalOutOptions);
+  }, [showAdditionalOutOptions]);
 
   const {
     inOptions,
@@ -233,10 +184,7 @@ export const InOutTextarea: FC<Props> = props => {
           </OptionsContainer>
           <MoreOptionsIconContainer
             ref={inOptionsMenuRef}
-            onClick={() => {
-              setShowAdditionalOutOptions(false);
-              setShowAdditionalInOptions(!showAdditionalInOptions);
-            }}
+            onClick={onInMoreOptionsClick}
           >
             {!showAdditionalInOptions && <IconChevronDown />}
             {showAdditionalInOptions && <IconChevronUp />}
@@ -268,10 +216,7 @@ export const InOutTextarea: FC<Props> = props => {
           <MoreOptionsIconContainer
             right
             ref={outOptionsMenuRef}
-            onClick={() => {
-              setShowAdditionalInOptions(false);
-              setShowAdditionalOutOptions(!showAdditionalOutOptions);
-            }}
+            onClick={onOutMoreOptionsClick}
           >
             {!showAdditionalOutOptions && <IconChevronDown />}
             {showAdditionalOutOptions && <IconChevronUp />}
@@ -281,51 +226,19 @@ export const InOutTextarea: FC<Props> = props => {
       <ConvertCardContent ref={convertCardRef}>
         {showAdditionalOutOptions && (
           <OptionsOverlay
-            minHeight={`${convertCardSizes.height}px`}
-            maxHeight={`${convertCardSizes.height}px`}
-          >
-            {menuOutOptions.map(option => {
-              return (
-                <OverlayOption
-                  onClick={() => {
-                    const updatedOptions = [
-                      ...outOptions.map(outOption => ({
-                        ...outOption,
-                        active: outOption.name === option.name,
-                      })),
-                    ];
-                    onOutOptionsUpdate(updatedOptions);
-                  }}
-                >
-                  {option.name}
-                </OverlayOption>
-              );
-            })}
-          </OptionsOverlay>
+            convertCardSizes={convertCardSizes}
+            shownMenuOptions={menuOutOptions}
+            allMenuOptions={outOptions}
+            onAllMenuOptionsUpdate={onOutOptionsUpdate}
+          />
         )}
         {showAdditionalInOptions && (
           <OptionsOverlay
-            minHeight={`${convertCardSizes.height}px`}
-            maxHeight={`${convertCardSizes.height}px`}
-          >
-            {menuOptions.map(option => {
-              return (
-                <OverlayOption
-                  onClick={() => {
-                    const updatedOptions = [
-                      ...inOptions.map(inOption => ({
-                        ...inOption,
-                        active: inOption.name === option.name,
-                      })),
-                    ];
-                    onInOptionsUpdate(updatedOptions);
-                  }}
-                >
-                  {option.name}
-                </OverlayOption>
-              );
-            })}
-          </OptionsOverlay>
+            convertCardSizes={convertCardSizes}
+            shownMenuOptions={menuOptions}
+            allMenuOptions={inOptions}
+            onAllMenuOptionsUpdate={onInOptionsUpdate}
+          />
         )}
         <TextAreaContent>
           <TextAreaWrapper>

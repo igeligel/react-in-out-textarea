@@ -19,7 +19,7 @@ Some of the unique features this component offers include:
 - Fully controllable
 - Ability to copy the output text to your clipboard
 - Minimalistic, visually pleasing style 
-- Variable content length (coming soon!)
+- Variable content length
 
 
 ## Used by
@@ -46,15 +46,16 @@ Some of the unique features this component offers include:
 
 ## Props
 
-| Name  | Type | Description |
-| --- | --- | --- |
-| inValue  | string  | The value that is shown on the left-handed side. |
-| outValue  | string  | The value that is shown on the right-handed side. |
-| inOptions | array | An array of options filled with names marked true or false |
-| onInInput | function | Called to listen to when the text on the left-hand side changes |
-| onInOptionsUpdate | function | Updated with new options as the parameter when inOptions language clicked |
-| outOptions | array | An array of options filled with names marked true or false and an activeClicked boolean |
-| onOutOptionsUpdate | function | Updated with new options as the parameter when outOptions language clicked |
+| Name  | Type | Required |  Description |
+| --- | --- | --- | --- |
+| inValue  | string  | ✔️ | The value that is shown on the left-handed side. |
+| outValue  | string  | ✔️ | The value that is shown on the right-handed side. |
+| maxContentLength | number | ❌  | Value that defines the maximum number of characters allowed in the text area. |
+| inOptions | array | ✔️ | An array of options filled with names marked true or false |
+| onInInput | function | ✔️ | Called to listen to when the text on the left-hand side changes | ✔️ |
+| onInOptionsUpdate | function | ✔️ | Updated with new options as the parameter when inOptions language clicked |
+| outOptions | array | ✔️ | An array of options filled with names marked true or false and an activeClicked boolean |
+| onOutOptionsUpdate | function | ✔️ | Updated with new options as the parameter when outOptions language clicked |
 
 ## Usage
 
@@ -222,6 +223,13 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/Silver292"><img src="https://avatars3.githubusercontent.com/u/5542588?v=4" width="100px;" alt=""/><br /><sub><b>Tom Scott</b></sub></a><br /><a href="https://github.com/igeligel/react-in-out-textarea/commits?author=Silver292" title="Code">💻</a> <a href="https://github.com/igeligel/react-in-out-textarea/commits?author=Silver292" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/aman601"><img src="https://avatars1.githubusercontent.com/u/22266039?v=4" width="100px;" alt=""/><br /><sub><b>aman601</b></sub></a><br /><a href="https://github.com/igeligel/react-in-out-textarea/commits?author=aman601" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/dasshield"><img src="https://avatars0.githubusercontent.com/u/29631512?v=4" width="100px;" alt=""/><br /><sub><b>dasshield</b></sub></a><br /><a href="https://github.com/igeligel/react-in-out-textarea/commits?author=dasshield" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/av-dx"><img src="https://avatars3.githubusercontent.com/u/56360160?v=4" width="100px;" alt=""/><br /><sub><b>Aashwin Vaish</b></sub></a><br /><a href="https://github.com/igeligel/react-in-out-textarea/commits?author=av-dx" title="Code">💻</a></td>
+    <td align="center"><a href="https://silltho.github.io/"><img src="https://avatars0.githubusercontent.com/u/5812228?v=4" width="100px;" alt=""/><br /><sub><b>Thomas Siller</b></sub></a><br /><a href="https://github.com/igeligel/react-in-out-textarea/commits?author=silltho" title="Code">💻</a></td>
+    <td align="center"><a href="https://ggolubic.github.io/"><img src="https://avatars0.githubusercontent.com/u/25390319?v=4" width="100px;" alt=""/><br /><sub><b>Gabrijel Golubić</b></sub></a><br /><a href="https://github.com/igeligel/react-in-out-textarea/commits?author=ggolubic" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/Tshamp7"><img src="https://avatars1.githubusercontent.com/u/54377075?v=4" width="100px;" alt=""/><br /><sub><b>Tom Shamp</b></sub></a><br /><a href="https://github.com/igeligel/react-in-out-textarea/commits?author=Tshamp7" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/binkpitch"><img src="https://avatars0.githubusercontent.com/u/20456165?v=4" width="100px;" alt=""/><br /><sub><b>Bink</b></sub></a><br /><a href="https://github.com/igeligel/react-in-out-textarea/commits?author=binkpitch" title="Code">💻</a></td>
   </tr>
 </table>
 

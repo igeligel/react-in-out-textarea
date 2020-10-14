@@ -3,16 +3,27 @@ import { ThemeProvider } from 'styled-components';
 import { InOutTextarea, Props, InOptions, OutOptions } from '../src';
 
 export default {
-  title: 'Welcome',
+  title: "Welcome",
   argTypes: {
     font: {
       control: {
-        type: 'select',
-        options: ['monospace', 'Roboto', 'Arial', 'Comic Sans'],
+        type: "select",
+        options: ["monospace", "Roboto", "Arial", "Comic Sans"],
+      },
+    },
+    maxContentLength: {
+      control: {
+        type: "range",
+        options: {
+          min: 1,
+          max: 100,
+          step: 1,
+        },
       },
     },
   },
 };
+
 
 // By passing optional props to this story, you can control the props of the component when
 // you consume the story in a test.
@@ -161,21 +172,32 @@ CustomFont.args = {
   font: 'Roboto',
 };
 
-export const WithLengthLimit = () => {
-  const [inValue, setInValue] = useState<string>('Has a limit = to 20!');
+type CustomMaxContentLengthProps = Partial<Props> & {
+  maxContentLength: number;
+};
+
+const _WithLengthLimit = ({
+  maxContentLength,
+  ...args
+}: CustomMaxContentLengthProps) => {
+  const [inValue, setInValue] = useState<string>(
+    `Has a limit = to ${maxContentLength}!`
+  );
 
   return (
-    <div style={{ maxWidth: '1100px' }}>
+    <div style={{ maxWidth: "1100px" }}>
       <InOutTextarea
         inValue={inValue}
-        outValue={inValue.split('').reverse().join('')}
-        inOptions={[{ active: true, name: 'English' }]}
-        outOptions={[{ active: true, name: 'German', activeClicked: true }]}
+        outValue={inValue.split("").reverse().join("")}
+        inOptions={[{ active: true, name: "English" }]}
+        outOptions={[{ active: true, name: "German", activeClicked: true }]}
         onInInput={setInValue}
         onInOptionsUpdate={() => true}
         onOutOptionsUpdate={() => true}
-        maxContentLength={20}
+        maxContentLength={maxContentLength}
       />
     </div>
   );
 };
+
+export const WithLengthLimit = _WithLengthLimit.bind({});
