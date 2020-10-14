@@ -242,7 +242,7 @@ export const InOutTextarea: FC<Props> = props => {
             {showAdditionalInOptions && <IconChevronUp />}
           </MoreOptionsIconContainer>
         </SideBar>
-        <Spacer/>
+        <Spacer />
         <SideBar>
           <OptionsContainer>
             {outOptions
