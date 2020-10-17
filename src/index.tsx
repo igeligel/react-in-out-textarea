@@ -13,7 +13,7 @@ import { OutMenuOptionStuff } from './OutMenuOptionStuff';
 import { IInOption, InOptions, IOutOption, OutOptions } from './types';
 import { CaseBar } from './CaseBar';
 import { SideBar } from './SideBar';
-import { TextAreaContentTop,TextAreaContentBottom } from './TextAreaContent';
+import { TextAreaContentTop, TextAreaContentBottom } from './TextAreaContent';
 import { TextAreaWrapper } from './TextAreaWrapper';
 import { Spacer } from './Spacer';
 import { OptionsOverlay } from './OptionsOverlay';
