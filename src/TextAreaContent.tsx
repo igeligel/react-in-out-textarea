@@ -9,4 +9,8 @@ export const TextAreaContent = styled.div`
   width: 100%;
   box-sizing: border-box;
   display: flex;
+
+  @media (max-width: 720px) {
+    background-color: hsl(0 0% 98% / 1);
+  }
 `;

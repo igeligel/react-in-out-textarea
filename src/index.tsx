@@ -25,7 +25,7 @@ const ConvertCardContent = styled.div`
   display: flex;
   position: relative;
 
-  @media (max-width: 576px) {
+  @media (max-width: 720px) {
     flex-direction: column;
   }
 `;
