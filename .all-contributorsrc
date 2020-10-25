@@ -157,6 +157,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "rohitgeddam",
+      "name": "rohitgeddam",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/48797475?v=4",
+      "profile": "https://github.com/rohitgeddam",
+      "contributions": [
+        "tool",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
