@@ -8,7 +8,7 @@
 
 ## Features
 
-react-in-out-textarea is a highly customisable React component, for all of your input and output text needs. 
+react-in-out-textarea is a highly customisable React component, for all of your input and output text needs.
 
 Some of the unique features this component offers include:
 
@@ -18,7 +18,7 @@ Some of the unique features this component offers include:
 - Dropdown to show all your labels when they won't fit on one line
 - Fully controllable
 - Ability to copy the output text to your clipboard
-- Minimalistic, visually pleasing style 
+- Minimalistic, visually pleasing style
 - Variable content length
 
 
@@ -26,11 +26,15 @@ Some of the unique features this component offers include:
 
 - [caseconverter.pro](https://caseconverter.pro/app)
 
+## Mentioned In
+
+- [Hacktoberfest and Open Sourcing a React.js Component](https://www.kevinpeters.net/hacktoberfest-and-open-sourcing-a-react-js-component)
+
 ## Installation
 
 <details>
   <summary>Install via NPM</summary>
-  
+
   ```bash
   npm install --save react-in-out-textarea
   ```
@@ -38,7 +42,7 @@ Some of the unique features this component offers include:
 
 <details>
   <summary>Install via yarn</summary>
-  
+
   ```bash
   yarn add react-in-out-textarea
   ```
@@ -116,7 +120,7 @@ export const ExampleComponent = () => {
 
 <details>
   <summary>React + Javascript</summary>
-  
+
   [CodeSandbox Example](https://codesandbox.io/s/react-in-out-textarea-javascript-react-kcl37?file=/src/ExampleComponent.js)
 
   Code Example:
