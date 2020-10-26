@@ -236,6 +236,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/binkpitch"><img src="https://avatars0.githubusercontent.com/u/20456165?v=4" width="100px;" alt=""/><br /><sub><b>Bink</b></sub></a><br /><a href="https://github.com/igeligel/react-in-out-textarea/commits?author=binkpitch" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/GabrielFalcom"><img src="https://avatars0.githubusercontent.com/u/33941931?v=4" width="100px;" alt=""/><br /><sub><b>Gabriel Paixão</b></sub></a><br /><a href="https://github.com/igeligel/react-in-out-textarea/commits?author=GabrielFalcom" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/rohitgeddam"><img src="https://avatars2.githubusercontent.com/u/48797475?v=4" width="100px;" alt=""/><br /><sub><b>rohitgeddam</b></sub></a><br /><a href="#tool-rohitgeddam" title="Tools">🔧</a> <a href="https://github.com/igeligel/react-in-out-textarea/commits?author=rohitgeddam" title="Code">💻</a></td>
+    <td align="center"><a href="https://emalsha.wordpress.com"><img src="https://avatars3.githubusercontent.com/u/7451018?v=4" width="100px;" alt=""/><br /><sub><b>G.H.B.Emalsha Rasad</b></sub></a><br /><a href="#tool-Emalsha" title="Tools">🔧</a> <a href="https://github.com/igeligel/react-in-out-textarea/commits?author=Emalsha" title="Documentation">📖</a></td>
   </tr>
 </table>
 
