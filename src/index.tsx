@@ -13,7 +13,7 @@ import { OutMenuOptionStuff } from './OutMenuOptionStuff';
 import { IInOption, InOptions, IOutOption, OutOptions } from './types';
 import { CaseBar } from './CaseBar';
 import { SideBar } from './SideBar';
-import { TextAreaContent } from './TextAreaContent';
+import { TextAreaContentTop, TextAreaContentBottom } from './TextAreaContent';
 import { TextAreaWrapper } from './TextAreaWrapper';
 import { Spacer } from './Spacer';
 import { OptionsOverlay } from './OptionsOverlay';
@@ -240,7 +240,7 @@ export const InOutTextarea: FC<Props> = props => {
             onAllMenuOptionsUpdate={onInOptionsUpdate}
           />
         )}
-        <TextAreaContent>
+        <TextAreaContentTop>
           <TextAreaWrapper>
             <Textarea
               data-test="from-textarea"
@@ -262,8 +262,8 @@ export const InOutTextarea: FC<Props> = props => {
           <IconContainer onClick={() => onInInput('')}>
             <IconX size={32} />
           </IconContainer>
-        </TextAreaContent>
-        <TextAreaContent>
+        </TextAreaContentTop>
+        <TextAreaContentBottom>
           <TextAreaWrapper>
             <Textarea
               disabled
@@ -277,7 +277,7 @@ export const InOutTextarea: FC<Props> = props => {
               <IconCopy size={24} />
             </IconContainer>
           </CopyToClipboard>
-        </TextAreaContent>
+        </TextAreaContentBottom>
       </ConvertCardContent>
     </ConvertCard>
   );
