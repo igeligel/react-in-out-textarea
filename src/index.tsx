@@ -17,6 +17,7 @@ import { TextAreaContentTop, TextAreaContentBottom } from './TextAreaContent';
 import { TextAreaWrapper } from './TextAreaWrapper';
 import { Spacer } from './Spacer';
 import { OptionsOverlay } from './OptionsOverlay';
+import { IconContainer } from './styled/IconContainer';
 
 export { IInOption, IOutOption, InOptions, OutOptions };
 
@@ -65,15 +66,6 @@ const Textarea = styled(TextareaAutosize)<ExampleTextProps>`
 
   :focus {
     outline: none;
-  }
-`;
-
-const IconContainer = styled.div`
-  cursor: pointer;
-  color: rgb(190, 196, 210);
-
-  :hover {
-    color: rgba(107, 120, 146, 1);
   }
 `;
 
