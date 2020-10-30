@@ -5,8 +5,6 @@ import useDimensions from 'react-use-dimensions';
 import { ConvertCard } from './styled/ConvertCard';
 import { IconX } from './IconX';
 import { IconCopy } from './IconCopy';
-import { IconChevronDown } from './IconChevronDown';
-import { IconChevronUp } from './IconChevronUp';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { InMenuOptionStuff } from './InMenuOptionStuff';
 import { OutMenuOptionStuff } from './OutMenuOptionStuff';
