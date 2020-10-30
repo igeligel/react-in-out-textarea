@@ -18,6 +18,7 @@ import { TextAreaWrapper } from './TextAreaWrapper';
 import { Spacer } from './Spacer';
 import { OptionsOverlay } from './OptionsOverlay';
 import { IconContainer } from './styled/IconContainer';
+import { MoreOptionsIconContainer } from './MoreOptionsIconContainer';
 
 export { IInOption, IOutOption, InOptions, OutOptions };
 
@@ -66,34 +67,6 @@ const Textarea = styled(TextareaAutosize)<ExampleTextProps>`
 
   :focus {
     outline: none;
-  }
-`;
-
-interface IMoreOptionsIconContainer {
-  right?: boolean;
-}
-
-const MoreOptionsIconContainer = styled.div<IMoreOptionsIconContainer>`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  color: hsl(222deg 18% 78%);
-  position: absolute;
-  right: 0;
-  height: 100%;
-  padding-left: 15px;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 1) 40%,
-    rgba(255, 255, 255, 1) 100%
-  );
-
-  padding-right: ${props => (props.right ? '10px' : '0px')};
-
-  :hover {
-    color: hsl(220deg 15% 50%);
   }
 `;
 
@@ -177,10 +150,8 @@ export const InOutTextarea: FC<Props> = props => {
           <MoreOptionsIconContainer
             ref={inOptionsMenuRef}
             onClick={onInMoreOptionsClick}
-          >
-            {!showAdditionalInOptions && <IconChevronDown />}
-            {showAdditionalInOptions && <IconChevronUp />}
-          </MoreOptionsIconContainer>
+            active={showAdditionalInOptions}
+          />
         </SideBar>
         <Spacer />
         <SideBar>
@@ -209,10 +180,8 @@ export const InOutTextarea: FC<Props> = props => {
             right
             ref={outOptionsMenuRef}
             onClick={onOutMoreOptionsClick}
-          >
-            {!showAdditionalOutOptions && <IconChevronDown />}
-            {showAdditionalOutOptions && <IconChevronUp />}
-          </MoreOptionsIconContainer>
+            active={showAdditionalOutOptions}
+          />
         </SideBar>
       </CaseBar>
       <ConvertCardContent ref={convertCardRef}>
