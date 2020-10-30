@@ -82,7 +82,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const InOutTextarea: FC<Props> = props => {
-  const [menuOptions, setMenuOptions] = useState<InOptions>([]);
+  const [menuInOptions, setMenuInOptions] = useState<InOptions>([]);
   const [menuOutOptions, setMenuOutOptions] = useState<OutOptions>([]);
   const [inOptionsMenuRef, inOptionsMenuRefSizes] = useDimensions({
     liveMeasure,
@@ -136,11 +136,11 @@ export const InOutTextarea: FC<Props> = props => {
                   <InMenuOptionStuff
                     inOptionsMenuRefSizes={inOptionsMenuRefSizes}
                     liveMeasure={liveMeasure}
-                    menuOptions={menuOptions}
+                    menuOptions={menuInOptions}
                     option={option}
                     inOptions={inOptions}
                     onInOptionsUpdate={onInOptionsUpdate}
-                    setMenuOptions={setMenuOptions}
+                    setMenuOptions={setMenuInOptions}
                   />
                 );
               })}
@@ -194,7 +194,7 @@ export const InOutTextarea: FC<Props> = props => {
         {showAdditionalInOptions && (
           <OptionsOverlay
             convertCardSizes={convertCardSizes}
-            shownMenuOptions={menuOptions}
+            shownMenuOptions={menuInOptions}
             allMenuOptions={inOptions}
             onAllMenuOptionsUpdate={onInOptionsUpdate}
           />
