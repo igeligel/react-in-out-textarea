@@ -79,6 +79,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   outOptions: OutOptions;
   onOutOptionsUpdate: (newOutOptions: OutOptions) => void;
   maxContentLength?: number;
+  onCopy?: () => void;
 }
 
 export const InOutTextarea: FC<Props> = props => {
@@ -119,6 +120,7 @@ export const InOutTextarea: FC<Props> = props => {
     onOutOptionsUpdate,
     outValue,
     maxContentLength,
+    onCopy,
   } = props;
 
   return (
@@ -231,7 +233,14 @@ export const InOutTextarea: FC<Props> = props => {
               value={outValue}
             />
           </TextAreaWrapper>
-          <CopyToClipboard text={outValue} onCopy={() => {}}>
+          <CopyToClipboard
+            text={outValue}
+            onCopy={() => {
+              if (onCopy) {
+                onCopy(outValue);
+              }
+            }}
+          >
             <IconContainer>
               <IconCopy size={24} />
             </IconContainer>
