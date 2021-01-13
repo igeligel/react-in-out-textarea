@@ -237,7 +237,7 @@ export const InOutTextarea: FC<Props> = props => {
             text={outValue}
             onCopy={() => {
               if (onCopy) {
-                onCopy(outValue);
+                onCopy();
               }
             }}
           >
