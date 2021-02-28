@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const TextAreaContentTop = styled.div`
+  flex-direction: column;
   flex: 1;
   padding-left: 28px;
   padding-top: 20px;

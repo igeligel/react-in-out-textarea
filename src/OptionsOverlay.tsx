@@ -27,6 +27,7 @@ const Container = styled.div<IContainer>`
   box-sizing: border-box;
   padding-top: 8px;
   padding-bottom: 8px;
+  z-index: 2;
 `;
 
 const OverlayOption = styled.div`
