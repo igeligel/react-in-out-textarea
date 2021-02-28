@@ -17,6 +17,10 @@ import { Spacer } from './Spacer';
 import { OptionsOverlay } from './OptionsOverlay';
 import { IconContainer } from './styled/IconContainer';
 import { MoreOptionsIconContainer } from './MoreOptionsIconContainer';
+import {
+  IMaxContentLengthIndicator,
+  MaxContentLengthIndicator,
+} from './MaxContentLengthIndicator';
 
 export { IInOption, IOutOption, InOptions, OutOptions };
 
@@ -68,6 +72,10 @@ const Textarea = styled(TextareaAutosize)<ExampleTextProps>`
   }
 `;
 
+const Flex = styled.div`
+  display: flex;
+`;
+
 const liveMeasure = true;
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -80,6 +88,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   onOutOptionsUpdate: (newOutOptions: OutOptions) => void;
   maxContentLength?: number;
   onCopy?: () => void;
+  maxContentLengthIndicator?: null | IMaxContentLengthIndicator;
 }
 
 export const InOutTextarea: FC<Props> = props => {
@@ -121,6 +130,7 @@ export const InOutTextarea: FC<Props> = props => {
     outValue,
     maxContentLength,
     onCopy,
+    maxContentLengthIndicator,
   } = props;
 
   return (
@@ -202,27 +212,38 @@ export const InOutTextarea: FC<Props> = props => {
           />
         )}
         <TextAreaContentTop>
-          <TextAreaWrapper>
-            <Textarea
-              data-test="from-textarea"
-              placeholder="..."
-              rows={2}
-              smallerFont={false}
-              value={inValue}
-              maxLength={maxContentLength}
-              onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
-                if (
-                  event.target.value === null ||
-                  event.target.value === undefined
-                )
-                  return;
-                onInInput(event.target.value);
-              }}
-            />
-          </TextAreaWrapper>
-          <IconContainer onClick={() => onInInput('')}>
-            <IconX size={32} />
-          </IconContainer>
+          <Flex>
+            <TextAreaWrapper>
+              <Textarea
+                data-test="from-textarea"
+                placeholder="..."
+                rows={2}
+                smallerFont={false}
+                value={inValue}
+                maxLength={maxContentLength}
+                onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
+                  if (
+                    event.target.value === null ||
+                    event.target.value === undefined
+                  )
+                    return;
+                  onInInput(event.target.value);
+                }}
+              />
+            </TextAreaWrapper>
+            <IconContainer onClick={() => onInInput('')}>
+              <IconX size={32} />
+            </IconContainer>
+          </Flex>
+          {maxContentLengthIndicator &&
+            maxContentLengthIndicator.show &&
+            maxContentLength && (
+              <MaxContentLengthIndicator
+                currentLength={inValue ? inValue.length : 0}
+                maxContentLength={maxContentLength}
+                maxContentLengthIndicator={maxContentLengthIndicator}
+              />
+            )}
         </TextAreaContentTop>
         <TextAreaContentBottom>
           <TextAreaWrapper>

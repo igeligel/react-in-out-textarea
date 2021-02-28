@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
+import ReactTooltip from 'react-tooltip';
 import { InOutTextarea, Props, InOptions, OutOptions } from '../src';
 
 export default {
-  title: "Welcome",
+  title: 'Welcome',
   argTypes: {
     font: {
       control: {
-        type: "select",
-        options: ["monospace", "Roboto", "Arial", "Comic Sans"],
+        type: 'select',
+        options: ['monospace', 'Roboto', 'Arial', 'Comic Sans'],
       },
     },
     maxContentLength: {
       control: {
-        type: "range",
+        type: 'range',
         options: {
           min: 1,
           max: 100,
@@ -23,7 +24,6 @@ export default {
     },
   },
 };
-
 
 // By passing optional props to this story, you can control the props of the component when
 // you consume the story in a test.
@@ -148,23 +148,23 @@ export const Default = (props?: Partial<Props>) => {
         }}
         outOptions={outOptions}
         onOutOptionsUpdate={newOutOptions => {
-          setOutOptions(newOutOptions)
+          setOutOptions(newOutOptions);
         }}
-        outValue={"Hello"}
+        outValue={'Hello'}
       />
     </div>
   );
 };
 
-type  CustomFontProps = Partial<Props> & {font: string};
+type CustomFontProps = Partial<Props> & { font: string };
 
-export const _CustomFont = ({font, ...args}: CustomFontProps) => {
+export const _CustomFont = ({ font, ...args }: CustomFontProps) => {
   return (
     <ThemeProvider theme={{ font }}>
-      <Default {...args}/>
+      <Default {...args} />
     </ThemeProvider>
   );
-}
+};
 
 export const CustomFont = _CustomFont.bind({});
 
@@ -185,19 +185,34 @@ const _WithLengthLimit = ({
   );
 
   return (
-    <div style={{ maxWidth: "1100px" }}>
+    <div style={{ maxWidth: '1100px' }}>
       <InOutTextarea
         inValue={inValue}
-        outValue={inValue.split("").reverse().join("")}
-        inOptions={[{ active: true, name: "English" }]}
-        outOptions={[{ active: true, name: "German", activeClicked: true }]}
+        outValue={inValue
+          .split('')
+          .reverse()
+          .join('')}
+        inOptions={[{ active: true, name: 'English' }]}
+        outOptions={[{ active: true, name: 'German', activeClicked: true }]}
         onInInput={setInValue}
         onInOptionsUpdate={() => true}
         onOutOptionsUpdate={() => true}
         maxContentLength={maxContentLength}
+        maxContentLengthIndicator={{
+          show: true,
+          // See https://www.npmjs.com/package/react-tooltip for more information
+          tooltip: (
+            <ReactTooltip place="top" type="dark" effect="solid">
+              You can only use up to {maxContentLength} characters
+            </ReactTooltip>
+          ),
+        }}
       />
     </div>
   );
 };
 
 export const WithLengthLimit = _WithLengthLimit.bind({});
+WithLengthLimit.args = {
+  maxContentLength: 100,
+};
