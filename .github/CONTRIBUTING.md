@@ -27,8 +27,29 @@ You can find a lot of information on how to set up the project in the [developme
 
 ## Creating Issues
 
+You cab create issues, but please use the [GitHub search](https://github.com/igeligel/react-in-out-textarea/search) first to look if you can find the same issue. If you find an issue that you think you can fix, please create a new issue and we will discuss it.
 
+If you cannot find a discussion or issue with the same problem or request, feel free to create a new issue, ideally with one of the templates that we have created and you [can find here when creating a new issue](https://github.com/igeligel/react-in-out-textarea/issues/new/choose).
 
 ## Code style
 
+Code style is not important per se. But we like to have our code consistent. We use [Prettier](https://prettier.io/) to format our code with the following rules:
+
+```json
+{
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  }
+}
+```
+
+And ESLint to validate our code. You can check for linting errors with:
+
+```sh
 yarn lint
+```
+
+Normally, the autoformatter and the linter will be run before you commit code, because we have a pre-commit hook.
