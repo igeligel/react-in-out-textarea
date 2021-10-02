@@ -66,6 +66,7 @@ Some of the unique features this component offers include:
 | maxContentLength | number | ❌  | Value that defines the maximum number of characters allowed in the text area. |
 | maxContentLengthIndicator | Object | ❌ | An Object describing how the length indicator is shown. |
 | onCopy | function | ❌ | A function that is called when you have copied the content of `InOutTextarea`. |
+| autoCloseMenuOnOptionSelection | boolean | ❌ | Boolean that defines whether an option menu should self-close after selection.
 
 ## Usage
 

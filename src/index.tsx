@@ -59,6 +59,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   maxContentLength?: number;
   onCopy?: () => void;
   maxContentLengthIndicator?: null | IMaxContentLengthIndicator;
+  autoCloseMenuOnOptionSelection?: boolean;
 }
 
 export const InOutTextarea: FC<Props> = props => {
@@ -101,7 +102,16 @@ export const InOutTextarea: FC<Props> = props => {
     maxContentLength,
     onCopy,
     maxContentLengthIndicator,
+    autoCloseMenuOnOptionSelection = true,
   } = props;
+
+  const onInOverlayOptionClick = useCallback(() => {
+    if (autoCloseMenuOnOptionSelection) setShowAdditionalInOptions(false);
+  }, [autoCloseMenuOnOptionSelection]);
+
+  const onOutOverlayOptionClick = useCallback(() => {
+    if (autoCloseMenuOnOptionSelection) setShowAdditionalOutOptions(false);
+  }, [autoCloseMenuOnOptionSelection]);
 
   return (
     <ConvertCard>
@@ -171,6 +181,7 @@ export const InOutTextarea: FC<Props> = props => {
             shownMenuOptions={menuOutOptions}
             allMenuOptions={outOptions}
             onAllMenuOptionsUpdate={onOutOptionsUpdate}
+            onOptionClick={onOutOverlayOptionClick}
           />
         )}
         {showAdditionalInOptions && (
@@ -179,6 +190,7 @@ export const InOutTextarea: FC<Props> = props => {
             shownMenuOptions={menuInOptions}
             allMenuOptions={inOptions}
             onAllMenuOptionsUpdate={onInOptionsUpdate}
+            onOptionClick={onInOverlayOptionClick}
           />
         )}
         <TextAreaContentTop>
