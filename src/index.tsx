@@ -7,7 +7,7 @@ import { IconCopy } from './IconCopy';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { InMenuOptionStuff } from './InMenuOptionStuff';
 import { OutMenuOptionStuff } from './OutMenuOptionStuff';
-import { IInOption, InOptions, IOutOption, OutOptions } from './types';
+import { InOptions, OutOptions } from './types';
 import { CaseBar } from './CaseBar';
 import { SideBar } from './SideBar';
 import { TextAreaContentTop, TextAreaContentBottom } from './TextAreaContent';
