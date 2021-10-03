@@ -65,7 +65,7 @@ Some of the unique features this component offers include:
 | onOutOptionsUpdate | function | ✔️ | Updated with new options as the parameter when outOptions language clicked |
 | maxContentLength | number | ❌  | Value that defines the maximum number of characters allowed in the text area. |
 | maxContentLengthIndicator | Object | ❌ | An Object describing how the length indicator is shown. |
-| onCopy | function | ❌ | A function you want to be called when you've copied the content of `InOutTextarea` |
+| onCopy | function | ❌ | A function that is called when you have copied the content of `InOutTextarea`. |
 
 ## Usage
 
