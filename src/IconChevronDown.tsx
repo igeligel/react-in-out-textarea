@@ -14,7 +14,7 @@ export const IconChevronDown = () => {
       className="feather feather-chevron-down"
       viewBox="0 0 24 24"
     >
-      <path d="M6 9L12 15 18 9"></path>
+      <path d="M6 9L12 15 18 9" />
     </svg>
   );
 };
