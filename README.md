@@ -244,6 +244,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/rohitgeddam"><img src="https://avatars2.githubusercontent.com/u/48797475?v=4?s=100" width="100px;" alt=""/><br /><sub><b>rohitgeddam</b></sub></a><br /><a href="#tool-rohitgeddam" title="Tools">🔧</a> <a href="https://github.com/igeligel/react-in-out-textarea/commits?author=rohitgeddam" title="Code">💻</a></td>
     <td align="center"><a href="https://emalsha.wordpress.com"><img src="https://avatars3.githubusercontent.com/u/7451018?v=4?s=100" width="100px;" alt=""/><br /><sub><b>G.H.B.Emalsha Rasad</b></sub></a><br /><a href="#tool-Emalsha" title="Tools">🔧</a> <a href="https://github.com/igeligel/react-in-out-textarea/commits?author=Emalsha" title="Documentation">📖</a></td>
     <td align="center"><a href="https://emmadawson.dev"><img src="https://avatars.githubusercontent.com/u/57045550?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Emma Dawson</b></sub></a><br /><a href="https://github.com/igeligel/react-in-out-textarea/commits?author=emmalearnscode" title="Code">💻</a></td>
+    <td align="center"><a href="https://wsameer.github.io/v1/"><img src="https://avatars.githubusercontent.com/u/8468992?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sameer Waskar</b></sub></a><br /><a href="https://github.com/igeligel/react-in-out-textarea/commits?author=wsameer" title="Documentation">📖</a></td>
   </tr>
 </table>
 
