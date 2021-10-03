@@ -220,7 +220,7 @@ export const InOutTextarea: FC<Props> = props => {
             <Textarea
               disabled
               smallerFont={false}
-              showCopyCursor={true}
+              showCopyCursor
               value={outValue}
             />
           </TextAreaWrapper>
