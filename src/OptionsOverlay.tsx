@@ -55,6 +55,7 @@ interface IOptionsOverlay<T extends Options> {
   shownMenuOptions: T;
   allMenuOptions: T;
   onAllMenuOptionsUpdate: (updatedOptions: T) => void;
+  onOptionClick: (option: IInOption | IOutOption) => void;
 }
 
 export const OptionsOverlay = <T extends Options>(
@@ -65,6 +66,7 @@ export const OptionsOverlay = <T extends Options>(
     shownMenuOptions,
     allMenuOptions,
     onAllMenuOptionsUpdate,
+    onOptionClick,
   } = props;
 
   return (
@@ -83,6 +85,7 @@ export const OptionsOverlay = <T extends Options>(
                 })),
               ];
               onAllMenuOptionsUpdate(updatedOptions as T);
+              onOptionClick(option);
             }}
           >
             {option.name}
