@@ -123,9 +123,10 @@ export const InOutTextarea: FC<Props> = props => {
                 if (a.active) return -1;
                 return 0;
               })
-              .map(option => {
+              .map((option) => {
                 return (
                   <InMenuOptionStuff
+                    key={option.name}
                     inOptionsMenuRefSizes={inOptionsMenuRefSizes}
                     liveMeasure={liveMeasure}
                     menuOptions={menuInOptions}
@@ -152,9 +153,10 @@ export const InOutTextarea: FC<Props> = props => {
                 if (a.active) return -1;
                 return 0;
               })
-              .map(option => {
+              .map((option) => {
                 return (
                   <OutMenuOptionStuff
+                    key={option.name}
                     outOptionsMenuRefSizes={outOptionsMenuRefSizes}
                     liveMeasure={liveMeasure}
                     menuOptions={menuOutOptions}
