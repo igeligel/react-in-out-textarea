@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import ReactTooltip from 'react-tooltip';
 import { InOutTextarea, Props, InOptions, OutOptions } from '../src';
 
@@ -141,13 +141,13 @@ export const Default = (props?: Partial<Props>) => {
       <InOutTextarea
         {...props}
         inValue={inValue}
-        onInInput={newValue => setInValue(newValue)}
+        onInInput={(newValue) => setInValue(newValue)}
         inOptions={inOptions}
-        onInOptionsUpdate={newInOptions => {
+        onInOptionsUpdate={(newInOptions) => {
           setInOptions(newInOptions);
         }}
         outOptions={outOptions}
-        onOutOptionsUpdate={newOutOptions => {
+        onOutOptionsUpdate={(newOutOptions) => {
           setOutOptions(newOutOptions);
         }}
         outValue={'Hello'}
@@ -188,10 +188,7 @@ const _WithLengthLimit = ({
     <div style={{ maxWidth: '1100px' }}>
       <InOutTextarea
         inValue={inValue}
-        outValue={inValue
-          .split('')
-          .reverse()
-          .join('')}
+        outValue={inValue.split('').reverse().join('')}
         inOptions={[{ active: true, name: 'English' }]}
         outOptions={[{ active: true, name: 'German', activeClicked: true }]}
         onInInput={setInValue}
