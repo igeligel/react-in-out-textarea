@@ -2,10 +2,10 @@ import React from 'react';
 
 interface IconXProps {
   /** Size in pixels */
-  size?: number;
+  size: number;
 }
 
-export const IconX = ({ size = 40 }: IconXProps) => {
+export const IconX = ({ size }: IconXProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

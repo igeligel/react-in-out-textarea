@@ -2,9 +2,9 @@ import React from 'react';
 
 interface IconCopyProps {
   /** Size in pixels */
-  size?: number;
+  size: number;
 }
-export const IconCopy = ({ size = 40 }: IconCopyProps) => {
+export const IconCopy = ({ size }: IconCopyProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
