@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import styled from 'styled-components';
 import { IconChevronDown } from './IconChevronDown';
 import { IconChevronUp } from './IconChevronUp';
@@ -37,6 +37,7 @@ type MoreOptionsIconContainerProps = {
     | undefined;
   active: boolean;
   right?: boolean;
+  style?: CSSProperties;
 };
 
 type ReactRef =
@@ -47,12 +48,13 @@ type ReactRef =
 
 export const MoreOptionsIconContainer = React.forwardRef(
   (props: MoreOptionsIconContainerProps, ref: ReactRef) => {
-    const { onClick, active, right } = props;
+    const { onClick, active, right, style } = props;
     return (
       <MoreOptionsIconContainerStyle
         right={right || false}
         ref={ref}
         onClick={onClick}
+        style={style}
       >
         {!active && <IconChevronDown />}
         {active && <IconChevronUp />}

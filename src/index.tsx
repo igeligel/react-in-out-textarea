@@ -123,7 +123,7 @@ export const InOutTextarea: FC<Props> = props => {
                 if (a.active) return -1;
                 return 0;
               })
-              .map((option) => {
+              .map(option => {
                 return (
                   <InMenuOptionStuff
                     key={option.name}
@@ -142,6 +142,9 @@ export const InOutTextarea: FC<Props> = props => {
             ref={inOptionsMenuRef}
             onClick={onInMoreOptionsClick}
             active={showAdditionalInOptions}
+            style={{
+              visibility: menuInOptions.length > 0 ? 'visible' : 'hidden',
+            }}
           />
         </SideBar>
         <Spacer />
@@ -153,7 +156,7 @@ export const InOutTextarea: FC<Props> = props => {
                 if (a.active) return -1;
                 return 0;
               })
-              .map((option) => {
+              .map(option => {
                 return (
                   <OutMenuOptionStuff
                     key={option.name}
@@ -173,6 +176,9 @@ export const InOutTextarea: FC<Props> = props => {
             ref={outOptionsMenuRef}
             onClick={onOutMoreOptionsClick}
             active={showAdditionalOutOptions}
+            style={{
+              visibility: menuOutOptions.length > 0 ? 'visible' : 'hidden',
+            }}
           />
         </SideBar>
       </CaseBar>

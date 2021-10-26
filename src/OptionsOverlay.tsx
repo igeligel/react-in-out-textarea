@@ -74,7 +74,7 @@ export const OptionsOverlay = <T extends Options>(
       minHeight={`${convertCardSizes.height}px`}
       maxHeight={`${convertCardSizes.height}px`}
     >
-      {shownMenuOptions.map((option) => {
+      {shownMenuOptions.map(option => {
         return (
           <OverlayOption
             key={option.name}
