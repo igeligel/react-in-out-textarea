@@ -1,11 +1,15 @@
 import React from 'react';
 
-// @ts-ignore
-export const IconX = props => {
+interface IconXProps {
+  /** Size in pixels */
+  size?: number;
+}
+
+export const IconX = ({ size = 40 }: IconXProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={props.size || '40'}
+      width={size}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
