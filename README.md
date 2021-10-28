@@ -21,7 +21,6 @@ Some of the unique features this component offers include:
 - Minimalistic, visually pleasing style
 - Variable content length
 
-
 ## Used by
 
 - [caseconverter.pro](https://caseconverter.pro/app)
@@ -35,38 +34,40 @@ Some of the unique features this component offers include:
 <details>
   <summary>Install via NPM</summary>
 
-  ```bash
-  npm install --save react-in-out-textarea
-  # You might want to install react-tooltip if you activate the max length option
-  npm install --save react-tooltip
-  ```
+```bash
+npm install --save react-in-out-textarea
+# You might want to install react-tooltip if you activate the max length option
+npm install --save react-tooltip
+```
+
 </details>
 
 <details>
   <summary>Install via yarn</summary>
 
-  ```bash
-  yarn add react-in-out-textarea
-  # You might want to install react-tooltip if you activate the max length option
-  yarn add react-tooltip
-  ```
+```bash
+yarn add react-in-out-textarea
+# You might want to install react-tooltip if you activate the max length option
+yarn add react-tooltip
+```
+
 </details>
 
 ## Props
 
-| Name  | Type | Required |  Description |
-| --- | --- | --- | --- |
-| inValue  | string  | ✔️ | The value that is shown on the left-handed side. |
-| outValue  | string  | ✔️ | The value that is shown on the right-handed side. |
-| inOptions | array | ✔️ | An array of options filled with names marked true or false |
-| onInInput | function | ✔️ | Called to listen to when the text on the left-hand side changes | ✔️ |
-| onInOptionsUpdate | function | ✔️ | Updated with new options as the parameter when inOptions language clicked |
-| outOptions | array | ✔️ | An array of options filled with names marked true or false and an activeClicked boolean |
-| onOutOptionsUpdate | function | ✔️ | Updated with new options as the parameter when outOptions language clicked |
-| maxContentLength | number | ❌  | Value that defines the maximum number of characters allowed in the text area. |
-| maxContentLengthIndicator | Object | ❌ | An Object describing how the length indicator is shown. |
-| onCopy | function | ❌ | A function that is called when you have copied the content of `InOutTextarea`. |
-| autoCloseMenuOnOptionSelection | boolean | ❌ | Boolean that defines whether an option menu should self-close after selection. |
+| Name                           | Type     | Required | Description                                                                    |
+| ------------------------------ | -------- | -------- | ------------------------------------------------------------------------------ |
+| inValue                        | string   | ✔️       | The value that is shown on the left-handed side.                               |
+| outValue                       | string   | ✔️       | The value that is shown on the right-handed side.                              |
+| inOptions                      | array    | ✔️       | An array of options filled with names marked true or false                     |
+| onInInput                      | function | ✔️       | Called to listen to when the text on the left-hand side changes                |
+| onInOptionsUpdate              | function | ✔️       | Updated with new options as the parameter when inOptions language clicked      |
+| outOptions                     | array    | ✔️       | An array of options filled with names marked true or false                     |
+| onOutOptionsUpdate             | function | ✔️       | Updated with new options as the parameter when outOptions language clicked     |
+| maxContentLength               | number   | ❌       | Value that defines the maximum number of characters allowed in the text area.  |
+| maxContentLengthIndicator      | Object   | ❌       | An Object describing how the length indicator is shown.                        |
+| onCopy                         | function | ❌       | A function that is called when you have copied the content of `InOutTextarea`. |
+| autoCloseMenuOnOptionSelection | boolean  | ❌       | Boolean that defines whether an option menu should self-close after selection. |
 
 ## Usage
 
@@ -84,7 +85,7 @@ import { InOutTextarea, InOptions, OutOptions } from 'react-in-out-textarea';
 export const ExampleComponent = () => {
   const [inValue, setInValue] = useState<string>('');
   const [outValue, setOutValue] = useState<string>('');
-  const [inOptions, setInOptions] = useState<InOptions>([
+  const [inOptions, setInOptions] = useState<Options>([
     {
       name: 'English',
       active: true,
@@ -94,11 +95,10 @@ export const ExampleComponent = () => {
       active: false,
     },
   ]);
-  const [outOptions, setOutOptions] = useState<OutOptions>([
+  const [outOptions, setOutOptions] = useState<Options>([
     {
       name: 'Chinese',
       active: true,
-      activeClicked: false,
     },
   ]);
 
@@ -106,16 +106,16 @@ export const ExampleComponent = () => {
     <InOutTextarea
       inValue={inValue}
       outValue={outValue}
-      onInInput={(newValue) => {
+      onInInput={newValue => {
         setInValue(newValue);
         setOutValue(newValue);
       }}
       inOptions={inOptions}
-      onInOptionsUpdate={(newInOptions) => {
+      onInOptionsUpdate={newInOptions => {
         setInOptions(newInOptions);
       }}
       outOptions={outOptions}
-      onOutOptionsUpdate={(newOutOptions) => {
+      onOutOptionsUpdate={newOutOptions => {
         setOutOptions(newOutOptions);
       }}
     />
@@ -128,57 +128,56 @@ export const ExampleComponent = () => {
 <details>
   <summary>React + Javascript</summary>
 
-  [CodeSandbox Example](https://codesandbox.io/s/react-in-out-textarea-javascript-react-kcl37?file=/src/ExampleComponent.js)
+[CodeSandbox Example](https://codesandbox.io/s/react-in-out-textarea-javascript-react-kcl37?file=/src/ExampleComponent.js)
 
-  Code Example:
+Code Example:
 
-  ```js
-  import React, { useState } from "react";
-  import { InOutTextarea } from "react-in-out-textarea";
+```js
+import React, { useState } from 'react';
+import { InOutTextarea } from 'react-in-out-textarea';
 
-  export const ExampleComponent = () => {
-    const [inValue, setInValue] = useState("");
-    const [outValue, setOutValue] = useState("");
-    const [inOptions, setInOptions] = useState([
-      {
-        name: "English",
-        active: true
-      },
-      {
-        name: "German",
-        active: false
-      }
-    ]);
-    const [outOptions, setOutOptions] = useState([
-      {
-        name: "Chinese",
-        active: true,
-        activeClicked: false
-      }
-    ]);
+export const ExampleComponent = () => {
+  const [inValue, setInValue] = useState('');
+  const [outValue, setOutValue] = useState('');
+  const [inOptions, setInOptions] = useState([
+    {
+      name: 'English',
+      active: true,
+    },
+    {
+      name: 'German',
+      active: false,
+    },
+  ]);
+  const [outOptions, setOutOptions] = useState([
+    {
+      name: 'Chinese',
+      active: true,
+    },
+  ]);
 
-    return (
-      <InOutTextarea
-        inValue={inValue}
-        outValue={outValue}
-        onInInput={(newValue) => {
-          setInValue(newValue);
-          setOutValue(newValue);
-        }}
-        inOptions={inOptions}
-        onInOptionsUpdate={(newInOptions) => {
-          setInOptions(newInOptions);
-        }}
-        outOptions={outOptions}
-        onOutOptionsUpdate={(newOutOptions) => {
-          setOutOptions(newOutOptions);
-        }}
-      />
-    );
-  };
-  ```
+  return (
+    <InOutTextarea
+      inValue={inValue}
+      outValue={outValue}
+      onInInput={newValue => {
+        setInValue(newValue);
+        setOutValue(newValue);
+      }}
+      inOptions={inOptions}
+      onInOptionsUpdate={newInOptions => {
+        setInOptions(newInOptions);
+      }}
+      outOptions={outOptions}
+      onOutOptionsUpdate={newOutOptions => {
+        setOutOptions(newOutOptions);
+      }}
+    />
+  );
+};
+```
+
 </details>
-
 
 ## Development
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import ReactTooltip from 'react-tooltip';
-import { InOutTextarea, Props, InOptions, OutOptions } from '../src';
+import { InOutTextarea, Props, Options } from '../src';
 
 export default {
   title: 'Welcome',
@@ -29,7 +29,7 @@ export default {
 // you consume the story in a test.
 export const Default = (props?: Partial<Props>) => {
   const [inValue, setInValue] = useState<string>('Hello');
-  const [inOptions, setInOptions] = useState<InOptions>([
+  const [inOptions, setInOptions] = useState<Options>([
     {
       name: 'English',
       active: false,
@@ -88,51 +88,42 @@ export const Default = (props?: Partial<Props>) => {
     },
   ]);
 
-  const [outOptions, setOutOptions] = useState<OutOptions>([
+  const [outOptions, setOutOptions] = useState<Options>([
     {
       name: 'English',
       active: true,
-      activeClicked: false,
     },
     {
       name: 'German',
       active: false,
-      activeClicked: false,
     },
     {
       name: 'Russian',
       active: false,
-      activeClicked: false,
     },
     {
       name: 'Chinese 1',
       active: false,
-      activeClicked: false,
     },
     {
       name: 'Chinese 2',
       active: false,
-      activeClicked: false,
     },
     {
       name: 'Chinese 3',
       active: false,
-      activeClicked: false,
     },
     {
       name: 'Chinese 4',
       active: false,
-      activeClicked: false,
     },
     {
       name: 'Chinese 5',
       active: false,
-      activeClicked: false,
     },
     {
       name: 'Chinese 6',
       active: false,
-      activeClicked: false,
     },
   ]);
 
@@ -193,7 +184,7 @@ const _WithLengthLimit = ({
           .reverse()
           .join('')}
         inOptions={[{ active: true, name: 'English' }]}
-        outOptions={[{ active: true, name: 'German', activeClicked: true }]}
+        outOptions={[{ active: true, name: 'German' }]}
         onInInput={setInValue}
         onInOptionsUpdate={() => true}
         onOutOptionsUpdate={() => true}

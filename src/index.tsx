@@ -7,7 +7,7 @@ import { IconCopy } from './IconCopy';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { InMenuOptionStuff } from './InMenuOptionStuff';
 import { OutMenuOptionStuff } from './OutMenuOptionStuff';
-import { IInOption, InOptions, IOutOption, OutOptions } from './types';
+import { IOption, Options } from './types';
 import { CaseBar } from './CaseBar';
 import { SideBar } from './SideBar';
 import { TextAreaContentTop, TextAreaContentBottom } from './TextAreaContent';
@@ -22,7 +22,7 @@ import {
 } from './MaxContentLengthIndicator';
 import { Textarea } from './styled/Textarea';
 
-export { IInOption, IOutOption, InOptions, OutOptions };
+export { IOption, Options };
 
 const ConvertCardContent = styled.div`
   width: 100%;
@@ -49,13 +49,13 @@ const Flex = styled.div`
 const liveMeasure = true;
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
-  inOptions: InOptions;
+  inOptions: Options;
   inValue: string;
   outValue: string;
   onInInput: (text: string) => void;
-  onInOptionsUpdate: (newInOptions: InOptions) => void;
-  outOptions: OutOptions;
-  onOutOptionsUpdate: (newOutOptions: OutOptions) => void;
+  onInOptionsUpdate: (newInOptions: Options) => void;
+  outOptions: Options;
+  onOutOptionsUpdate: (newOutOptions: Options) => void;
   maxContentLength?: number;
   onCopy?: () => void;
   maxContentLengthIndicator?: null | IMaxContentLengthIndicator;
@@ -63,8 +63,8 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const InOutTextarea: FC<Props> = props => {
-  const [menuInOptions, setMenuInOptions] = useState<InOptions>([]);
-  const [menuOutOptions, setMenuOutOptions] = useState<OutOptions>([]);
+  const [menuInOptions, setMenuInOptions] = useState<Options>([]);
+  const [menuOutOptions, setMenuOutOptions] = useState<Options>([]);
   const [inOptionsMenuRef, inOptionsMenuRefSizes] = useDimensions({
     liveMeasure,
   });
@@ -123,16 +123,16 @@ export const InOutTextarea: FC<Props> = props => {
                 if (a.active) return -1;
                 return 0;
               })
-              .map((option) => {
+              .map(option => {
                 return (
                   <InMenuOptionStuff
                     key={option.key ?? option.name}
-                    inOptionsMenuRefSizes={inOptionsMenuRefSizes}
+                    optionsMenuRefSizes={inOptionsMenuRefSizes}
                     liveMeasure={liveMeasure}
                     menuOptions={menuInOptions}
                     option={option}
-                    inOptions={inOptions}
-                    onInOptionsUpdate={onInOptionsUpdate}
+                    options={inOptions}
+                    onOptionsUpdate={onInOptionsUpdate}
                     setMenuOptions={setMenuInOptions}
                   />
                 );
@@ -149,20 +149,19 @@ export const InOutTextarea: FC<Props> = props => {
           <OptionsContainer>
             {outOptions
               .sort(a => {
-                if (a.activeClicked) return -1;
                 if (a.active) return -1;
                 return 0;
               })
-              .map((option) => {
+              .map(option => {
                 return (
                   <OutMenuOptionStuff
                     key={option.key ?? option.name}
-                    outOptionsMenuRefSizes={outOptionsMenuRefSizes}
+                    optionsMenuRefSizes={outOptionsMenuRefSizes}
                     liveMeasure={liveMeasure}
                     menuOptions={menuOutOptions}
                     option={option}
-                    outOptions={outOptions}
-                    onOutOptionsUpdate={onOutOptionsUpdate}
+                    options={outOptions}
+                    onOptionsUpdate={onOutOptionsUpdate}
                     setMenuOptions={setMenuOutOptions}
                   />
                 );

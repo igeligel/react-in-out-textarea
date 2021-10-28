@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { IDimensionValues } from 'react-use-dimensions';
-import { IInOption, IOutOption } from './types';
+import { IOption } from './types';
 
 interface IContainer {
   minHeight?: string;
@@ -48,14 +48,14 @@ const OverlayOption = styled.div`
   }
 `;
 
-type Options = Array<IInOption | IOutOption>;
+type Options = Array<IOption>;
 
 interface IOptionsOverlay<T extends Options> {
   convertCardSizes: IDimensionValues;
   shownMenuOptions: T;
   allMenuOptions: T;
   onAllMenuOptionsUpdate: (updatedOptions: T) => void;
-  onOptionClick: (option: IInOption | IOutOption) => void;
+  onOptionClick: (option: IOption) => void;
 }
 
 export const OptionsOverlay = <T extends Options>(
@@ -74,7 +74,7 @@ export const OptionsOverlay = <T extends Options>(
       minHeight={`${convertCardSizes.height}px`}
       maxHeight={`${convertCardSizes.height}px`}
     >
-      {shownMenuOptions.map((option) => {
+      {shownMenuOptions.map(option => {
         return (
           <OverlayOption
             key={option.key ?? option.name}
