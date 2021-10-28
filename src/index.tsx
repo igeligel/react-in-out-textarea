@@ -142,9 +142,7 @@ export const InOutTextarea: FC<Props> = props => {
             ref={inOptionsMenuRef}
             onClick={onInMoreOptionsClick}
             active={showAdditionalInOptions}
-            style={{
-              visibility: menuInOptions.length > 0 ? 'visible' : 'hidden',
-            }}
+            isHidden={menuInOptions.length === 0}
           />
         </SideBar>
         <Spacer />
@@ -176,9 +174,7 @@ export const InOutTextarea: FC<Props> = props => {
             ref={outOptionsMenuRef}
             onClick={onOutMoreOptionsClick}
             active={showAdditionalOutOptions}
-            style={{
-              visibility: menuOutOptions.length > 0 ? 'visible' : 'hidden',
-            }}
+            isHidden={menuOutOptions.length === 0}
           />
         </SideBar>
       </CaseBar>
