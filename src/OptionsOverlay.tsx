@@ -77,7 +77,7 @@ export const OptionsOverlay = <T extends Options>(
       {shownMenuOptions.map((option) => {
         return (
           <OverlayOption
-            key={option.name}
+            key={option.key ?? option.name}
             onClick={() => {
               const updatedOptions = [
                 ...allMenuOptions.map(outOption => ({

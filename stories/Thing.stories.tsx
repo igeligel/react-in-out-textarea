@@ -216,3 +216,61 @@ export const WithLengthLimit = _WithLengthLimit.bind({});
 WithLengthLimit.args = {
   maxContentLength: 100,
 };
+
+export const WithCustomKey = (props?: Partial<Props>) => {
+  const [inValue, setInValue] = useState<string>('Hello');
+  const [inOptions, setInOptions] = useState<Options>([
+    {
+      name: 'English',
+      key: 'en',
+      active: false,
+    },
+    {
+      name: 'German',
+      key: 'de',
+      active: true,
+    },
+    {
+      name: 'Russian',
+      key: 'ru',
+      active: false,
+    },
+  ]);
+
+  const [outOptions, setOutOptions] = useState<Options>([
+    {
+      name: 'English',
+      key: 'en',
+      active: true,
+    },
+    {
+      name: 'German',
+      key: 'de',
+      active: false,
+    },
+    {
+      name: 'Russian',
+      key: 'ru',
+      active: false,
+    },
+  ]);
+
+  return (
+    <div style={{ maxWidth: '1100px' }}>
+      <InOutTextarea
+        {...props}
+        inValue={inValue}
+        onInInput={newValue => setInValue(newValue)}
+        inOptions={inOptions}
+        onInOptionsUpdate={newInOptions => {
+          setInOptions(newInOptions);
+        }}
+        outOptions={outOptions}
+        onOutOptionsUpdate={newOutOptions => {
+          setOutOptions(newOutOptions);
+        }}
+        outValue={'Hello'}
+      />
+    </div>
+  );
+};
