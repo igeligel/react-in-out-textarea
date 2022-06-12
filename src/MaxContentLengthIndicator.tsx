@@ -28,17 +28,19 @@ const IndicatorText = styled.a`
   font-family: Roboto;
 `;
 
-export const MaxContentLengthIndicator: React.FC<MaxContentLengthIndicatorProps> = props => {
-  const { maxContentLength, currentLength } = props;
+export const MaxContentLengthIndicator: React.FC<MaxContentLengthIndicatorProps> =
+  (props) => {
+    const { maxContentLength, maxContentLengthIndicator, currentLength } =
+      props;
 
-  return (
-    <Container>
-      <SmallContainer>
-        {props.maxContentLengthIndicator.tooltip}
-        <IndicatorText data-tip="React-tooltip">
-          {currentLength} / {maxContentLength}
-        </IndicatorText>
-      </SmallContainer>
-    </Container>
-  );
-};
+    return (
+      <Container>
+        <SmallContainer>
+          {maxContentLengthIndicator.tooltip}
+          <IndicatorText data-tip="React-tooltip">
+            {currentLength} / {maxContentLength}
+          </IndicatorText>
+        </SmallContainer>
+      </Container>
+    );
+  };
