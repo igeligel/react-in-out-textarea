@@ -5,6 +5,7 @@ import { IconChevronUp } from './IconChevronUp';
 
 interface IMoreOptionsIconContainer {
   right: boolean;
+  isHidden?: boolean;
 }
 
 const MoreOptionsIconContainerStyle = styled.div<IMoreOptionsIconContainer>`
@@ -26,6 +27,8 @@ const MoreOptionsIconContainerStyle = styled.div<IMoreOptionsIconContainer>`
 
   padding-right: ${props => (props.right ? '10px' : '0px')};
 
+  visibility: ${({ isHidden }) => (isHidden ? 'hidden' : 'visible')};
+
   :hover {
     color: hsl(220deg 15% 50%);
   }
@@ -37,6 +40,7 @@ type MoreOptionsIconContainerProps = {
     | undefined;
   active: boolean;
   right?: boolean;
+  isHidden?: boolean;
 };
 
 type ReactRef =
@@ -47,12 +51,13 @@ type ReactRef =
 
 export const MoreOptionsIconContainer = React.forwardRef(
   (props: MoreOptionsIconContainerProps, ref: ReactRef) => {
-    const { onClick, active, right } = props;
+    const { onClick, active, right, isHidden } = props;
     return (
       <MoreOptionsIconContainerStyle
         right={right || false}
         ref={ref}
         onClick={onClick}
+        isHidden={isHidden}
       >
         {!active && <IconChevronDown />}
         {active && <IconChevronUp />}
